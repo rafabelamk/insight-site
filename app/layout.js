@@ -1,13 +1,13 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Insight — Tráfego Pago, Conteúdo e Tecnologia',
+  title: 'Insight — Soluções em Tráfego Pago e Tecnologia',
   description:
     'Agência de marketing e produção de conteúdo. Unimos tráfego pago, produção de conteúdo e tecnologia para negócios crescerem com previsibilidade.',
   keywords:
     'tráfego pago, meta ads, google ads, gestão de anúncios, agência de marketing, produção de conteúdo, Insight, performance digital',
   openGraph: {
-    title: 'Insight — Tráfego Pago, Conteúdo e Tecnologia',
+    title: 'Insight — Soluções em Tráfego Pago e Tecnologia',
     description:
       'Pronto pra crescer com previsibilidade? Conheça a Insight.',
     type: 'website',
