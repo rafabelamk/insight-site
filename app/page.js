@@ -134,8 +134,8 @@ function PhoneMockup() {
       {/* Story ring: perfil Instagram */}
       <div style={{position:'absolute',left:'-15px',top:'60px',zIndex:10,display:'flex',flexDirection:'column',alignItems:'center',gap:'7px',animation:'floatIcon 3.8s ease-in-out infinite',animationDelay:'0.4s'}}>
         <div style={{width:'140px',height:'140px',borderRadius:'50%',background:'linear-gradient(135deg,#adf01b,#c3ff3d)',padding:'4px',boxShadow:'0 8px 28px rgba(0,0,0,0.3)'}}>
-          <div style={{width:'100%',height:'100%',borderRadius:'50%',border:'4px solid #0c0c0c',overflow:'hidden',background:'#0c0c0c',display:'flex',alignItems:'center',justifyContent:'center'}}>
-            <Image src="/logos/eye-icon.png" alt="Insight" width={100} height={100} style={{width:'70%',height:'auto',objectFit:'contain'}}/>
+          <div style={{width:'100%',height:'100%',borderRadius:'50%',border:'4px solid #0c0c0c',overflow:'hidden'}}>
+            <Image src="/logos/eye-on-green.png" alt="Insight" width={140} height={140} style={{width:'100%',height:'100%',objectFit:'cover'}}/>
           </div>
         </div>
         {/* TODO: confirme o @ correto do Instagram da Insight */}
