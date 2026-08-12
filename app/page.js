@@ -211,10 +211,58 @@ export default function Home() {
 
   useEffect(() => { return useDrag(logosRef) }, [useDrag])
 
+  // Olho flutuante: desloca a imagem dentro do quadro conforme a direção/velocidade do scroll
+  const eyeImgRef = useRef(null)
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    let lastY = window.scrollY
+    let resetTimer = null
+    const MAX_SHIFT = 11 // px — limite pra não "vazar" da moldura circular
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60)
+
+      const currentY = window.scrollY
+      const delta = currentY - lastY
+      lastY = currentY
+
+      const el = eyeImgRef.current
+      if (el) {
+        const shiftY = Math.max(-MAX_SHIFT, Math.min(MAX_SHIFT, delta * 0.9))
+        el.style.setProperty('--eye-shift-y', `${shiftY}px`)
+        el.style.setProperty('--eye-shift-x', `${shiftY * 0.35}px`)
+      }
+
+      if (resetTimer) clearTimeout(resetTimer)
+      resetTimer = setTimeout(() => {
+        const el2 = eyeImgRef.current
+        if (el2) {
+          el2.style.setProperty('--eye-shift-y', '0px')
+          el2.style.setProperty('--eye-shift-x', '0px')
+        }
+      }, 350)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (resetTimer) clearTimeout(resetTimer)
+    }
+  }, [])
+
+  // Scroll reveal: observa todos os elementos .reveal-anim e "liga" a animação quando entram na tela.
+  // Usamos style.animationPlayState (mutação direta, fora do controle do React) em vez de
+  // classList, porque alguns desses cards mudam de className por outros motivos (ex: checkbox
+  // marcado, FAQ aberto) — e o React reescreveria a className a cada re-render, resetando o efeito.
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal-anim')
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running'
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' })
+    els.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -222,9 +270,8 @@ export default function Home() {
       {/* NAVBAR */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 bg-[#0c0c0c] ${scrolled ? 'shadow-lg shadow-black/20' : ''}`}>
         <div className="max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16 md:h-20">
-          <a href="#home" className="flex items-center gap-2.5">
-            <Image src="/logos/eye-icon.png" alt="Insight" width={36} height={36} className="w-8 h-8 object-contain"/>
-            <span className="text-white font-black text-lg tracking-tight">INSIGHT</span>
+          <a href="#home" className="flex items-center">
+            <Image src="/logos/insight-logo-green.png" alt="Insight" width={310} height={80} className="h-7 md:h-8 w-auto object-contain"/>
           </a>
           <div className="hidden md:flex items-center gap-8">
             {[['#servicos','Serviços'],['#metodo','Como trabalhamos'],['#sobre','Sobre'],['#faq','FAQ']].map(([href,label]) => (
@@ -434,21 +481,21 @@ export default function Home() {
           </h2>
           <p className="text-gray-500 text-center mb-6 sm:mb-14 max-w-xl mx-auto">Gestão completa nas plataformas que mais convertem, com estratégia e dados reais.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className="bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100">
+            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '0ms'}}>
               <div className="mb-5 w-16 h-16 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)'}}>
                 <IconIG className="w-8 h-8 text-white"/>
               </div>
               <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Tráfego Pago</span>
               <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Instagram Ads e Facebook Ads</h3>
             </div>
-            <div className="bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100">
+            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '90ms'}}>
               <div className="mb-5 w-16 h-16 bg-white rounded-2xl border-2 border-gray-100 flex items-center justify-center shadow-sm">
                 <svg className="w-9 h-9" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
               </div>
               <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Tráfego Pago</span>
               <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Google Ads</h3>
             </div>
-            <div className="bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100">
+            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '180ms'}}>
               <div className="mb-5 w-16 h-16 bg-[#f4f4f4] rounded-2xl flex items-center justify-center">
                 <div className="flex -space-x-2">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{background:'linear-gradient(135deg,#f09433,#dc2743,#bc1888)'}}><IconIG className="w-4 h-4 text-white"/></div>
@@ -458,7 +505,7 @@ export default function Home() {
               <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Criação</span>
               <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Criativos em imagem de ads focados em conversão</h3>
             </div>
-            <div className="bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100">
+            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '270ms'}}>
               <div className="mb-5 w-16 h-16 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#adf01b,#c3ff3d)'}}>
                 <svg className="w-9 h-9 text-white" fill="none" viewBox="0 0 36 36" stroke="currentColor" strokeWidth="1.6">
                   <rect x="5" y="12" width="26" height="18" rx="2.5" strokeLinecap="round"/>
@@ -491,7 +538,7 @@ export default function Home() {
               { icon:<svg className="w-7 h-7 text-[#adf01b]" fill="none" viewBox="0 0 32 32" stroke="currentColor" strokeWidth="1.8"><rect x="4" y="4" width="24" height="24" rx="4" strokeLinecap="round"/><path d="M11 11l10 10M21 11l-10 10" strokeLinecap="round"/></svg>, text:'Fez tráfego e obteve resultados ruins' },
               { icon:<svg className="w-7 h-7 text-[#adf01b]" fill="none" viewBox="0 0 32 32" stroke="currentColor" strokeWidth="1.8"><circle cx="16" cy="16" r="11"/><path d="M16 10v6l4 2" strokeLinecap="round"/></svg>, text:'Não tem tempo de fazer seus próprios anúncios' },
             ].map((item, i) => (
-              <div key={i} className="bg-white rounded-2xl p-4 flex items-center gap-4 border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+              <div key={i} className="reveal-anim bg-white rounded-2xl p-4 flex items-center gap-4 border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5" style={{animationDelay: `${(i % 2) * 90}ms`}}>
                 <div className="w-12 h-12 bg-[#eff6ff] rounded-xl flex items-center justify-center flex-shrink-0">
                   {item.icon}
                 </div>
@@ -525,7 +572,8 @@ export default function Home() {
                   type="button"
                   onClick={() => setCheckedFit(p => checked ? p.filter(x => x !== i) : [...p, i])}
                   aria-pressed={checked}
-                  className={`w-full flex items-center gap-4 text-left bg-white rounded-2xl p-5 sm:p-6 border transition-all duration-300 ${
+                  style={{animationDelay: `${i * 90}ms`}}
+                  className={`reveal-anim w-full flex items-center gap-4 text-left bg-white rounded-2xl p-5 sm:p-6 border transition-all duration-300 ${
                     checked
                       ? 'border-[#adf01b] shadow-md -translate-y-0.5 ring-1 ring-[#adf01b]/20'
                       : 'border-gray-100 shadow-sm hover:border-blue-200 hover:shadow-md hover:-translate-y-0.5'
@@ -599,7 +647,7 @@ export default function Home() {
             { num: '06', title: 'Landing Pages de Alta Conversão', sub: 'Página feita pra uma coisa só: virar lead. Estrutura, copy, velocidade e teste até o custo cair.' },
             { num: '07', title: 'Rastreamento de Conversões', sub: 'Google Tag Manager e Pixel do Meta instalados, testados e validados. Sem conversão perdida, sem número inventado.' },
           ].map((item, i, arr) => (
-            <div key={i} className={`flex items-start gap-5 py-7 group cursor-default transition-all ${i < arr.length - 1 ? 'border-b border-white/10 hover:border-white/25' : ''}`}>
+            <div key={i} style={{animationDelay: `${i * 70}ms`}} className={`reveal-anim flex items-start gap-5 py-7 group cursor-default transition-all ${i < arr.length - 1 ? 'border-b border-white/10 hover:border-white/25' : ''}`}>
               <span className="text-gray-600 text-sm font-bold w-8 flex-shrink-0 pt-1">{item.num}</span>
               <svg className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5 group-hover:text-[#adf01b] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10"/>
@@ -627,7 +675,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {PILARES.map((step, i) => (
-              <div key={step.num} className="group relative bg-white/10 border border-white/20 hover:border-[#adf01b]/60 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-black/20">
+              <div key={step.num} style={{animationDelay: `${i * 120}ms`}} className="reveal-anim group relative bg-white/10 border border-white/20 hover:border-[#adf01b]/60 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-black/20">
                 {i < 2 && (
                   <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-10">
                     <div className="w-6 h-6 bg-[#adf01b] rounded-full flex items-center justify-center">
@@ -716,7 +764,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-[380px_1fr] gap-8 md:gap-10 items-center">
             <div className="relative order-2 md:order-1 max-w-xs sm:max-w-sm md:max-w-none mx-auto md:mx-0">
               <div className="bg-[#0c0c0c] rounded-3xl overflow-hidden aspect-[4/5] relative shadow-lg border border-gray-100 flex items-center justify-center p-10">
-                <span className="text-[#adf01b] font-black text-4xl sm:text-5xl tracking-tight">INSIGHT</span>
+                <Image src="/logos/eye-icon.png" alt="Insight" width={280} height={280} className="w-full h-auto max-w-[220px] object-contain"/>
                 {/* TODO: confirme o @ correto do Instagram da Insight */}
                 <div className="absolute bottom-6 left-6 right-6 bg-[#adf01b] rounded-xl p-4">
                   <p className="text-black font-bold text-sm">@1sightmkt</p>
@@ -773,7 +821,7 @@ export default function Home() {
           </div>
           <div className="space-y-3">
             {FAQ_DATA.map((item, i) => (
-              <div key={i} className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm">
+              <div key={i} style={{animationDelay: `${i * 60}ms`}} className="reveal-anim bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm">
                 <button onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
                         className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors">
                   <span className="font-bold text-[#0c0c0c] pr-6 text-[15px] leading-snug">{item.q}</span>
@@ -840,6 +888,11 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Olho flutuante que acompanha o scroll */}
+      <div className="eye-follower" aria-hidden="true">
+        <Image ref={eyeImgRef} src="/logos/eye-icon.png" alt="" width={98} height={98} />
+      </div>
     </>
   )
 }

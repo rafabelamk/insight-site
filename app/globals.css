@@ -119,3 +119,63 @@ body {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-9px); }
 }
+
+/* Scroll reveal — cards que surgem conforme entram na tela */
+.reveal-anim {
+  opacity: 0;
+  animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-play-state: paused;
+  will-change: opacity, transform;
+}
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-anim {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Olho flutuante que acompanha o scroll */
+.eye-follower {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 60;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 0 2px rgba(173,240,27,0.5);
+  background: #0c0c0c;
+  pointer-events: none;
+}
+.eye-follower img {
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) translateY(var(--eye-shift-y, 0px)) translateX(var(--eye-shift-x, 0px));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  object-fit: contain;
+}
+@media (min-width: 768px) {
+  .eye-follower {
+    width: 68px;
+    height: 68px;
+    right: 28px;
+    bottom: 28px;
+  }
+  .eye-follower img {
+    width: 98px;
+    height: 98px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eye-follower { display: none; }
+}
