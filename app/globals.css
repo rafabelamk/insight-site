@@ -161,7 +161,7 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) translateY(var(--eye-shift-y, 0px)) translateX(var(--eye-shift-x, 0px));
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.18s ease-out;
   object-fit: contain;
 }
 @media (min-width: 768px) {

@@ -211,37 +211,66 @@ export default function Home() {
 
   useEffect(() => { return useDrag(logosRef) }, [useDrag])
 
-  // Olho flutuante: desloca a imagem dentro do quadro conforme a direção/velocidade do scroll
+  // Olho flutuante: em telas com mouse, ele aponta na direção do cursor (em qualquer
+  // lugar da página, não só quando passa por cima). Em touch (sem mouse), mantém o
+  // efeito de acompanhar a direção do scroll como alternativa.
+  const eyeWrapperRef = useRef(null)
   const eyeImgRef = useRef(null)
+  const usingMouseRef = useRef(false)
+
   useEffect(() => {
+    const MAX_SHIFT = 11 // px — limite pra não "vazar" da moldura circular
+
+    const setShift = (shiftX, shiftY) => {
+      const el = eyeImgRef.current
+      if (!el) return
+      el.style.setProperty('--eye-shift-x', `${shiftX}px`)
+      el.style.setProperty('--eye-shift-y', `${shiftY}px`)
+    }
+
+    const pointAt = (clientX, clientY) => {
+      const wrapper = eyeWrapperRef.current
+      if (!wrapper) return
+      const rect = wrapper.getBoundingClientRect()
+      const cx = rect.left + rect.width / 2
+      const cy = rect.top + rect.height / 2
+      const angle = Math.atan2(clientY - cy, clientX - cx)
+      setShift(Math.cos(angle) * MAX_SHIFT, Math.sin(angle) * MAX_SHIFT)
+    }
+
+    const onMouseMove = (e) => {
+      usingMouseRef.current = true
+      pointAt(e.clientX, e.clientY)
+    }
+    const onTouchMove = (e) => {
+      const t = e.touches?.[0]
+      if (t) pointAt(t.clientX, t.clientY)
+    }
+
+    // Fallback pra scroll (só entra em ação se nunca detectarmos um mouse real)
     let lastY = window.scrollY
     let resetTimer = null
-    const MAX_SHIFT = 11 // px — limite pra não "vazar" da moldura circular
     const onScroll = () => {
       setScrolled(window.scrollY > 60)
+      if (usingMouseRef.current) return // já tem mouse guiando o olho, não interfere
 
       const currentY = window.scrollY
       const delta = currentY - lastY
       lastY = currentY
 
-      const el = eyeImgRef.current
-      if (el) {
-        const shiftY = Math.max(-MAX_SHIFT, Math.min(MAX_SHIFT, delta * 0.9))
-        el.style.setProperty('--eye-shift-y', `${shiftY}px`)
-        el.style.setProperty('--eye-shift-x', `${shiftY * 0.35}px`)
-      }
+      const shiftY = Math.max(-MAX_SHIFT, Math.min(MAX_SHIFT, delta * 0.9))
+      setShift(shiftY * 0.35, shiftY)
 
       if (resetTimer) clearTimeout(resetTimer)
-      resetTimer = setTimeout(() => {
-        const el2 = eyeImgRef.current
-        if (el2) {
-          el2.style.setProperty('--eye-shift-y', '0px')
-          el2.style.setProperty('--eye-shift-x', '0px')
-        }
-      }, 350)
+      resetTimer = setTimeout(() => setShift(0, 0), 350)
     }
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true })
+    window.addEventListener('touchmove', onTouchMove, { passive: true })
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
+      window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('touchmove', onTouchMove)
       window.removeEventListener('scroll', onScroll)
       if (resetTimer) clearTimeout(resetTimer)
     }
@@ -890,7 +919,7 @@ export default function Home() {
       </footer>
 
       {/* Olho flutuante que acompanha o scroll */}
-      <div className="eye-follower" aria-hidden="true">
+      <div ref={eyeWrapperRef} className="eye-follower" aria-hidden="true">
         <Image ref={eyeImgRef} src="/logos/eye-icon.png" alt="" width={98} height={98} />
       </div>
     </>
