@@ -833,7 +833,7 @@ export default function Home() {
               </p>
               <p className="text-gray-600 leading-relaxed mb-4 text-[15px]">
                 {/* TODO: personalize com o histórico real de clientes/verticais da Insight */}
-                Atuamos com negócios dos mais diversos segmentos — segurança, varejo, empreendimentos e serviços — unindo estratégia de mídia paga, criação de conteúdo e tecnologia sob um mesmo teto.
+                Atuamos com negócios dos mais diversos segmentos — segurança, varejo, empreendimentos e serviços — unindo estratégia de mídia paga e tecnologia sob um mesmo teto.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4 text-[15px]">
                 Somos responsáveis por criar, monitorar, analisar e otimizar funis de marketing e campanhas de mídia paga para cada cliente.
