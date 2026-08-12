@@ -9,21 +9,8 @@ const WA = 'https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%2
 // TODO: ajuste os números para os reais da Insight
 const STATS = [
   { icon: true, label: 'Negócios de diversos nichos impactados' },
-  { value: '+3', label: 'Verticais de clientes atendidas' },
   { value: '100%', label: 'Campanhas orientadas por dados' },
   { value: '360°', label: 'Conteúdo, tráfego e tecnologia integrados' },
-]
-
-// TODO: troque pelos depoimentos reais dos seus clientes (Orsegups, Ótica Rio Branco, Terra Milia, etc.)
-const TESTIMONIALS = [
-  { name: '[Nome do cliente]', handle: '@clientehandle', initials: 'OR', color: '#adf01b',
-    text: '[Adicione aqui um depoimento real de um cliente sobre o trabalho da Insight.]' },
-  { name: '[Nome do cliente]', handle: '@clientehandle', initials: 'OB', color: '#adf01b',
-    text: '[Adicione aqui um depoimento real de um cliente sobre o trabalho da Insight.]' },
-  { name: '[Nome do cliente]', handle: '@clientehandle', initials: 'TM', color: '#adf01b',
-    text: '[Adicione aqui um depoimento real de um cliente sobre o trabalho da Insight.]' },
-  { name: '[Nome do cliente]', handle: '@clientehandle', initials: 'IN', color: '#adf01b',
-    text: '[Adicione aqui um depoimento real de um cliente sobre o trabalho da Insight.]' },
 ]
 
 // TODO: troque os placeholders "otica-rio-branco.png" e "terra-milia.png" pelos logos reais
@@ -79,20 +66,11 @@ function IconWA({ className = 'w-5 h-5' }) {
 function IconIG({ className = 'w-5 h-5' }) {
   return <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
 }
-function IconLI({ className = 'w-5 h-5' }) {
-  return <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-}
 function IconMeta() {
   return <svg viewBox="0 0 36 36" fill="none" className="w-10 h-10"><path d="M18 14.4c-1.944-2.916-4.86-5.4-7.344-5.4C5.724 9 3 13.428 3 18c0 2.916.756 4.86 2.268 4.86 1.08 0 2.268-.972 3.888-3.024L10.8 17.46c.756-1.08 1.512-2.268 2.376-3.24.756.864 1.404 1.944 2.052 3.024l1.512 2.7C14.796 23.028 12.96 25.02 10.8 25.02c-1.404 0-2.7-.54-3.672-1.62C5.4 21.78 4.5 19.62 4.5 17.028 4.5 12.204 7.2 7.5 11.196 7.5c3.348 0 6.48 2.916 8.532 5.832.54-.756 1.08-1.512 1.62-2.16C23.22 8.904 25.488 7.5 27.972 7.5 31.968 7.5 34.5 12.204 34.5 17.028c0 2.592-.9 4.752-2.628 6.372-.972 1.08-2.268 1.62-3.672 1.62-2.16 0-3.996-1.98-5.94-5.4l-1.512-2.7c-.648-1.08-1.296-2.16-2.052-3.024-.864.972-1.62 2.16-2.376 3.24l-1.728 2.376c1.62 2.052 2.7 3.024 3.888 3.024C20.916 22.86 21.6 20.916 21.6 18c0-4.572-2.7-9-6.66-9-2.484 0-5.4 2.484-7.344 5.4" fill="#0082FB"/></svg>
 }
 function IconGoogleAds() {
   return <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10"><path d="M3.5 30.5L14 11l6.5 11.25L14 33.5 3.5 30.5z" fill="#FBBC04"/><path d="M20.5 22.25L14 11 26.5 11 33 22.25 20.5 22.25z" fill="#4285F4"/><circle cx="33" cy="30.5" r="6.5" fill="#34A853"/></svg>
-}
-function Star() {
-  return <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#FBBF24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-}
-function GoogleBadge() {
-  return <svg className="w-3.5 h-3.5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
 }
 
 function PhoneMockup() {
@@ -157,7 +135,7 @@ function PhoneMockup() {
       <div style={{position:'absolute',left:'-15px',top:'60px',zIndex:10,display:'flex',flexDirection:'column',alignItems:'center',gap:'7px',animation:'floatIcon 3.8s ease-in-out infinite',animationDelay:'0.4s'}}>
         <div style={{width:'140px',height:'140px',borderRadius:'50%',background:'linear-gradient(135deg,#adf01b,#c3ff3d)',padding:'4px',boxShadow:'0 8px 28px rgba(0,0,0,0.3)'}}>
           <div style={{width:'100%',height:'100%',borderRadius:'50%',border:'4px solid #0c0c0c',overflow:'hidden',background:'#0c0c0c',display:'flex',alignItems:'center',justifyContent:'center'}}>
-            <Image src="/logos/insight-logo-green.png" alt="Insight" width={100} height={26} style={{width:'75%',height:'auto',objectFit:'contain'}}/>
+            <Image src="/logos/eye-icon.png" alt="Insight" width={100} height={100} style={{width:'70%',height:'auto',objectFit:'contain'}}/>
           </div>
         </div>
         {/* TODO: confirme o @ correto do Instagram da Insight */}
@@ -189,7 +167,6 @@ export default function Home() {
   const [openFAQ, setOpenFAQ] = useState(null)
   const [checkedFit, setCheckedFit] = useState([])
   const [scrolled, setScrolled] = useState(false)
-  const [activeT, setActiveT] = useState(0)
 
   const logosRef = useRef(null)
 
@@ -240,18 +217,14 @@ export default function Home() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    const timer = setInterval(() => setActiveT(p => (p + 1) % TESTIMONIALS.length), 4500)
-    return () => clearInterval(timer)
-  }, [])
-
   return (
     <>
       {/* NAVBAR */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 bg-[#0c0c0c] ${scrolled ? 'shadow-lg shadow-black/20' : ''}`}>
         <div className="max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16 md:h-20">
-          <a href="#home" className="flex items-center gap-2">
-            <Image src="/logos/insight-logo-green.png" alt="Insight" width={140} height={37} className="h-6 w-auto object-contain"/>
+          <a href="#home" className="flex items-center gap-2.5">
+            <Image src="/logos/eye-icon.png" alt="Insight" width={36} height={36} className="w-8 h-8 object-contain"/>
+            <span className="text-white font-black text-lg tracking-tight">INSIGHT</span>
           </a>
           <div className="hidden md:flex items-center gap-8">
             {[['#servicos','Serviços'],['#metodo','Como trabalhamos'],['#sobre','Sobre'],['#faq','FAQ']].map(([href,label]) => (
@@ -321,7 +294,7 @@ export default function Home() {
                 Transforme cliques em leads, vendas e <span className="text-[#adf01b]">crescimento real e mensurável.</span>
               </h1>
               <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 max-w-xl">
-                Somos a Insight, agência de tráfego pago, produção de conteúdo e tecnologia. Impulsionamos negócios locais, digitais e marcas a crescerem de forma previsível com estratégia, dados e otimização contínua.
+                Somos a Insight, agência de tráfego pago e tecnologia. Impulsionamos negócios locais, digitais e marcas a crescerem de forma previsível com estratégia, dados e otimização contínua.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href={WA} target="_blank" rel="noreferrer"
@@ -344,7 +317,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-4 pt-4 lg:mt-6 lg:pt-6 border-t border-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-4 pt-4 lg:mt-6 lg:pt-6 border-t border-white/10">
             {STATS.map(s => (
               <div key={s.label} className="flex flex-col gap-2">
                 {s.icon ? (
@@ -440,15 +413,9 @@ export default function Home() {
         </div>
 
         <div className="max-w-3xl mx-auto relative text-center">
-          <Image
-            src="/logos/insight-logo-dark.png"
-            alt="InSight"
-            width={302}
-            height={80}
-            className="h-9 md:h-12 w-auto object-contain mx-auto mb-6"
-          />
+          <p className="text-[#0c0c0c] font-black text-2xl md:text-3xl tracking-tight mb-4">INSIGHT</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0c0c0c] leading-tight mb-5">
-            A InSight é pra quem quer ter <span className="text-white">tudo à vista</span> e crescer com <span className="text-white">previsibilidade</span>
+            A Insight é pra quem quer ter <span className="text-white">tudo à vista</span> e crescer com <span className="text-white">previsibilidade</span>
           </h2>
           <p className="text-[#0c0c0c]/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
             Metodologia própria de gestão de tráfego pago que une estratégia, dados e execução — sem achismo, sem promessa vazia. Cada real investido tem propósito, cada resultado é mensurável, e cada decisão é orientada por número real, não por intuição.
@@ -513,13 +480,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black text-[#0c0c0c] text-center mb-6 sm:mb-14 leading-tight flex flex-wrap items-center justify-center gap-3">
             <span>Para quem é a</span>
-            <Image
-              src="/logos/insight-logo.png"
-              alt="InSight"
-              width={310}
-              height={80}
-              className="h-12 md:h-16 w-auto object-contain"
-            />
+            <span className="text-[#0c0c0c]">INSIGHT</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
@@ -546,13 +507,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black text-[#0c0c0c] text-center mb-6 sm:mb-14 leading-tight flex flex-wrap items-center justify-center gap-3">
             <span>A</span>
-            <Image
-              src="/logos/insight-logo.png"
-              alt="InSight"
-              width={310}
-              height={80}
-              className="h-12 md:h-16 w-auto object-contain"
-            />
+            <span className="text-[#0c0c0c]">INSIGHT</span>
             <span>é para você <span className="text-[#adf01b]">se…</span></span>
           </h2>
 
@@ -631,13 +586,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto relative">
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6 sm:mb-14 leading-tight flex flex-wrap items-center justify-center gap-3 text-center">
             <span>O que a</span>
-            <Image
-              src="/logos/insight-logo-green.png"
-              alt="InSight"
-              width={302}
-              height={80}
-              className="h-14 md:h-20 w-auto object-contain self-center -translate-y-0.5"
-            />
+            <span className="text-[#adf01b]">INSIGHT</span>
             <span className="text-[#adf01b]">entrega?</span>
           </h2>
 
@@ -707,56 +656,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DEPOIMENTOS */}
-      <section className="bg-[#f4f4f4] py-8 sm:py-12 px-5 sm:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-6 sm:mb-10">
-            <h2 className="text-4xl md:text-5xl font-black text-[#0c0c0c]">O que os clientes da <span className="text-[#adf01b]">InSight</span> dizem</h2>
-          </div>
-          {/* Desktop: grid 4 colunas */}
-          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="bg-white rounded-2xl p-5 flex flex-col gap-3 shadow-sm border border-gray-100 hover:shadow-md transition-all">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-sm flex-shrink-0" style={{backgroundColor: t.color}}>{t.initials}</div>
-                    <div>
-                      <p className="font-black text-[#0c0c0c] text-sm leading-tight">{t.name}</p>
-                      <p className="text-gray-400 text-[11px]">{t.handle}</p>
-                    </div>
-                  </div>
-                  <GoogleBadge/>
-                </div>
-                <div className="flex gap-0.5">{[...Array(5)].map((_, s) => <Star key={s}/>)}</div>
-                <p className="text-gray-600 text-[13px] leading-relaxed flex-1">"{t.text}"</p>
-              </div>
-            ))}
-          </div>
-          {/* Mobile: carrossel */}
-          <div className="sm:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-5 px-5" style={{scrollbarWidth:'none',msOverflowStyle:'none'}}>
-            {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="bg-white rounded-2xl p-5 flex flex-col gap-3 shadow-sm border border-gray-100 snap-start flex-shrink-0" style={{width:'calc(100vw - 60px)'}}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-sm flex-shrink-0" style={{backgroundColor: t.color}}>{t.initials}</div>
-                    <div>
-                      <p className="font-black text-[#0c0c0c] text-sm leading-tight">{t.name}</p>
-                      <p className="text-gray-400 text-[11px]">{t.handle}</p>
-                    </div>
-                  </div>
-                  <GoogleBadge/>
-                </div>
-                <div className="flex gap-0.5">{[...Array(5)].map((_, s) => <Star key={s}/>)}</div>
-                <p className="text-gray-600 text-[13px] leading-relaxed">"{t.text}"</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex sm:hidden justify-center gap-1.5 mt-3">
-            {TESTIMONIALS.map((_, i) => <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#adf01b]/30"/>)}
-          </div>
-        </div>
-      </section>
-
       {/* CLIENTES ATENDIDOS */}
       <section className="bg-white py-8 sm:py-12 px-5 sm:px-8">
         <div className="max-w-6xl mx-auto">
@@ -766,8 +665,15 @@ export default function Home() {
           </div>
           {/* Marquee automático */}
           <div ref={logosRef} className="overflow-hidden -mx-5 sm:-mx-8 cursor-grab select-none" style={{overflowX:'auto',scrollbarWidth:'none'}}>
-            <div className="marquee-inner">
-              {[...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
+            <div className="marquee-inner" style={{animationDuration: '46s'}}>
+              {(() => {
+                // repete o conjunto de logos várias vezes para garantir que cada metade
+                // da faixa seja mais larga que a tela, e só então duplica — isso é o que
+                // faz o loop de -50% fechar sem "pulo" nem trecho vazio no final
+                const REPEAT = 6
+                const longSeq = Array.from({ length: REPEAT }, () => LOGOS).flat()
+                return [...longSeq, ...longSeq]
+              })().map((logo, i) => (
                 <div key={i} className="flex flex-col items-center gap-2 flex-shrink-0 w-24">
                   <div className="w-20 h-20 bg-white rounded-[22px] flex items-center justify-center shadow-sm border border-gray-100 overflow-hidden">
                     <div className="relative w-16 h-16 rounded-xl overflow-hidden">
@@ -802,13 +708,7 @@ export default function Home() {
             </span>
             <h3 className="flex flex-wrap items-center justify-center gap-3 text-3xl sm:text-4xl font-black text-[#0c0c0c] mt-4">
               <span>Quem é a</span>
-              <Image
-                src="/logos/insight-logo-dark.png"
-                alt="Insight"
-                width={302}
-                height={80}
-                className="h-8 sm:h-10 w-auto object-contain"
-              />
+              <span>INSIGHT</span>
             </h3>
             <div className="w-16 h-1.5 bg-[#0c0c0c] rounded-full mt-4 mx-auto"></div>
           </div>
@@ -816,7 +716,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-[380px_1fr] gap-8 md:gap-10 items-center">
             <div className="relative order-2 md:order-1 max-w-xs sm:max-w-sm md:max-w-none mx-auto md:mx-0">
               <div className="bg-[#0c0c0c] rounded-3xl overflow-hidden aspect-[4/5] relative shadow-lg border border-gray-100 flex items-center justify-center p-10">
-                <Image src="/logos/insight-logo-green.png" alt="Insight" width={302} height={80} className="w-full h-auto object-contain"/>
+                <span className="text-[#adf01b] font-black text-4xl sm:text-5xl tracking-tight">INSIGHT</span>
                 {/* TODO: confirme o @ correto do Instagram da Insight */}
                 <div className="absolute bottom-6 left-6 right-6 bg-[#adf01b] rounded-xl p-4">
                   <p className="text-black font-bold text-sm">@1sightmkt</p>
@@ -825,7 +725,7 @@ export default function Home() {
               </div>
 
               <div className="flex flex-wrap justify-center gap-2 mt-6">
-                {['Negócios Locais','Segurança','Varejo','Empreendimentos'].map(n => (
+                {['Negócios Locais','Infoprodutos','Perpétuos','Lançamentos','Marcas'].map(n => (
                   <span key={n} className="bg-[#0c0c0c] text-white text-xs font-bold px-4 py-1.5 rounded-full">{n}</span>
                 ))}
               </div>
@@ -835,14 +735,10 @@ export default function Home() {
                    className="flex items-center gap-2 bg-[#adf01b] hover:bg-[#c3ff3d] text-black px-6 py-3 rounded-full font-bold text-sm transition-all hover:scale-105">
                   <IconWA className="w-4 h-4"/> Chama no Direct
                 </a>
-                {/* TODO: confirme os links reais de Instagram e LinkedIn da Insight */}
+                {/* TODO: confirme o link real de Instagram da Insight */}
                 <a href="https://www.instagram.com/1sightmkt/" target="_blank" rel="noreferrer"
                    className="flex items-center gap-2 border border-gray-200 hover:border-pink-400 text-gray-600 hover:text-pink-500 px-6 py-3 rounded-full font-semibold text-sm transition-all">
                   <IconIG className="w-4 h-4"/> Instagram
-                </a>
-                <a href="#" target="_blank" rel="noreferrer"
-                   className="flex items-center gap-2 border border-gray-200 hover:border-[#adf01b] text-gray-600 hover:text-[#adf01b] px-6 py-3 rounded-full font-semibold text-sm transition-all">
-                  <IconLI className="w-4 h-4"/> LinkedIn
                 </a>
               </div>
             </div>
@@ -851,7 +747,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-black text-[#0c0c0c] mt-3 mb-6 leading-tight">A equipe por trás dos resultados</h2>
 
               <p className="text-gray-600 leading-relaxed mb-4 text-[15px]">
-                Somos a <strong className="text-[#0c0c0c]">Insight</strong>, agência especializada em tráfego pago, produção de conteúdo e tecnologia, dedicada a impulsionar o crescimento de negócios locais e marcas. <strong className="text-[#0c0c0c]">Te ajudamos a transformar cliques em clientes.</strong>
+                Somos a <strong className="text-[#0c0c0c]">Insight</strong>, agência especializada em tráfego pago e tecnologia, dedicada a impulsionar o crescimento de negócios locais e marcas. <strong className="text-[#0c0c0c]">Te ajudamos a transformar cliques em clientes.</strong>
               </p>
               <p className="text-gray-600 leading-relaxed mb-4 text-[15px]">
                 {/* TODO: personalize com o histórico real de clientes/verticais da Insight */}
@@ -915,8 +811,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div>
-              <Image src="/logos/insight-logo-green.png" alt="Insight" width={160} height={42} className="h-8 w-auto object-contain mb-4"/>
-              <p className="text-gray-500 text-sm leading-relaxed">Agência de tráfego pago, produção de conteúdo e tecnologia.</p>
+              <div className="flex items-center gap-2 mb-4">
+                <Image src="/logos/eye-icon.png" alt="Insight" width={32} height={32} className="w-7 h-7 object-contain"/>
+                <span className="text-[#adf01b] font-black text-lg tracking-tight">INSIGHT</span>
+              </div>
+              <p className="text-gray-500 text-sm leading-relaxed">Agência de tráfego pago e tecnologia.</p>
             </div>
             <div>
               <h4 className="text-white font-bold mb-4 text-xs uppercase tracking-widest">Serviços</h4>
@@ -932,7 +831,6 @@ export default function Home() {
                 <a href={WA} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-500 hover:text-white text-sm transition-colors"><IconWA className="w-4 h-4"/> WhatsApp</a>
                 {/* TODO: confirme o @ e o link reais do Instagram da Insight */}
                 <a href="https://www.instagram.com/1sightmkt/" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-500 hover:text-white text-sm transition-colors"><IconIG className="w-4 h-4"/> @1sightmkt</a>
-                <a href="#" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-500 hover:text-white text-sm transition-colors"><IconLI className="w-4 h-4"/> LinkedIn</a>
               </div>
             </div>
           </div>
