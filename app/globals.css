@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --navy: #0c0c0c;
+  --navy-dark: #000000;
+  --blue: #adf01b;
+  --blue-light: #c3ff3d;
+  --ice: #f4f4f4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #adf01b;
+  border-radius: 3px;
+}
+
+/* FAQ accordion animation */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+.faq-content.open {
+  max-height: 500px;
+}
+
+/* Marquee / carousel scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-inner {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-inner:hover {
+  animation-play-state: paused;
+}
+.marquee-inner-slow {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-inner-slow:hover {
+  animation-play-state: paused;
+}
+.marquee-dragging {
+  animation-play-state: paused !important;
+  cursor: grabbing;
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Glow pulse for CTA buttons */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(173, 240, 27, 0.35); }
+  50% { box-shadow: 0 0 40px rgba(173, 240, 27, 0.65); }
+}
+
+.btn-glow:hover {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #adf01b, #c3ff3d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(173, 240, 27, 0.1);
+}
+
+/* Float animation for phone mockup */
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-9px); }
+}
