@@ -219,14 +219,16 @@ export default function Home() {
   const usingMouseRef = useRef(false)
 
   useEffect(() => {
-    const MAX_SHIFT = 11 // px — limite pra não "vazar" da moldura circular
-
     const setShift = (shiftX, shiftY) => {
       const el = eyeImgRef.current
       if (!el) return
       el.style.setProperty('--eye-shift-x', `${shiftX}px`)
       el.style.setProperty('--eye-shift-y', `${shiftY}px`)
     }
+
+    // quanto a pupila pode se deslocar dentro da esclera — proporcional ao
+    // tamanho do quadro (que muda entre mobile/desktop), não um valor fixo
+    const getMaxShift = (rect) => rect.width * 0.14
 
     const pointAt = (clientX, clientY) => {
       const wrapper = eyeWrapperRef.current
@@ -235,7 +237,8 @@ export default function Home() {
       const cx = rect.left + rect.width / 2
       const cy = rect.top + rect.height / 2
       const angle = Math.atan2(clientY - cy, clientX - cx)
-      setShift(Math.cos(angle) * MAX_SHIFT, Math.sin(angle) * MAX_SHIFT)
+      const maxShift = getMaxShift(rect)
+      setShift(Math.cos(angle) * maxShift, Math.sin(angle) * maxShift)
     }
 
     const onMouseMove = (e) => {
@@ -258,7 +261,9 @@ export default function Home() {
       const delta = currentY - lastY
       lastY = currentY
 
-      const shiftY = Math.max(-MAX_SHIFT, Math.min(MAX_SHIFT, delta * 0.9))
+      const wrapper = eyeWrapperRef.current
+      const maxShift = wrapper ? getMaxShift(wrapper.getBoundingClientRect()) : 8
+      const shiftY = Math.max(-maxShift, Math.min(maxShift, delta * 0.9))
       setShift(shiftY * 0.35, shiftY)
 
       if (resetTimer) clearTimeout(resetTimer)
@@ -920,7 +925,8 @@ export default function Home() {
 
       {/* Olho flutuante que acompanha o scroll */}
       <div ref={eyeWrapperRef} className="eye-follower" aria-hidden="true">
-        <Image ref={eyeImgRef} src="/logos/eye-icon.png" alt="" width={98} height={98} />
+        <Image src="/logos/eye-sclera.png" alt="" width={68} height={68} className="sclera" />
+        <Image ref={eyeImgRef} src="/logos/eye-pupil.png" alt="" width={40} height={40} className="pupil" />
       </div>
     </>
   )
