@@ -909,13 +909,13 @@ export default function Home() {
           </div>
 
           {/* Cartão de perfil (simulação visual, não é um embed real) */}
-          <div className="bg-[#0c0c0c] rounded-2xl p-5 sm:p-6 mb-6 flex items-center gap-4 sm:gap-6 max-w-xl mx-auto">
+          <div className="bg-[#0c0c0c] rounded-2xl p-5 sm:p-6 mb-6 flex items-center justify-center gap-4 sm:gap-6 w-full">
             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center flex-shrink-0" style={{background:'linear-gradient(135deg,#adf01b,#c3ff3d)', padding:'3px'}}>
               <div className="w-full h-full rounded-full overflow-hidden border-2 border-[#0c0c0c]">
                 <Image src="/logos/eye-icon.png" alt="Insight" width={80} height={80} className="w-full h-full object-cover"/>
               </div>
             </div>
-            <div className="flex-1 min-w-0">
+            <div className="flex-shrink-0">
               <a href="https://www.instagram.com/1sightmkt/" target="_blank" rel="noreferrer" className="text-white font-bold text-base hover:underline">1sightmkt</a>
               <p className="text-gray-400 text-sm">Insight Marketing</p>
               <div className="text-gray-300 text-xs sm:text-[13px] leading-relaxed mt-1.5 space-y-0.5">
