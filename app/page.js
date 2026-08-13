@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 
-const WA = 'https://wa.me/5511961590986?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20an%C3%A1lise%20gratuita!'
+const WA = 'https://wa.me/5511961590986?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Insight%20e%20gostaria%20de%20saber%20mais!'
 
 // TODO: ajuste os números para os reais da Insight
 const STATS = [
@@ -35,20 +35,20 @@ const LOGOS = [
 
 const PILARES = [
   { num: '01', title: 'Clareza', emoji: '👁️',
-    desc: 'CPA, ROAS, CTR e custo por lead sempre à vista — sem esperar relatório mensal pra saber o que está funcionando na sua campanha.',
+    desc: 'CPA, ROAS, CTR e custo por lead sempre à vista, sem esperar relatório mensal pra saber o que está funcionando na sua campanha.',
     detail: 'Crescimento com clareza' },
   { num: '02', title: 'Dados', emoji: '📊',
     desc: 'Testamos criativos, públicos e ofertas continuamente. Escalamos o anúncio que converte e pausamos o que só consome verba.',
     detail: 'Decisões com dados reais' },
   { num: '03', title: 'Contexto', emoji: '🔎',
-    desc: 'Entregamos os números que realmente importam pro seu negócio — CPL, ROAS, custo por venda — junto com o próximo passo pra cada um.',
+    desc: 'Entregamos os números que realmente importam pro seu negócio (CPL, ROAS, custo por venda) junto com o próximo passo pra cada um.',
     detail: 'Métricas sem contexto são ruído. Dados com clareza são ouro.' },
 ]
 
 const FAQ_DATA = [
   { q: 'Como funciona a solução de vocês, na prática?',
-    a: 'Fazemos um diagnóstico completo do seu negócio e dos seus anúncios pra entender o que vai gerar mais resultado pra você.\n\n✅ Base do plano: tráfego pago estratégico + dashboards de acompanhamento.\n🎯 Se identificarmos que outra frente (landing page, criativos, hub de organização) vai impactar direto no resultado, oferecemos como solução extra, com escopo e valor próprios.\n👁️ Você decide o que agregar — tráfego pago e dashboards sempre fazem parte do essencial.' },
-  { q: 'Eu realmente preciso de um profissional para gerenciar meus anúncios?',
+    a: 'Fazemos um diagnóstico completo do seu negócio e dos seus anúncios pra entender o que vai gerar mais resultado pra você.\n\n✅ Base do plano: tráfego pago estratégico + dashboards de acompanhamento.\n🎯 Se identificarmos que outra frente (landing page, criativos, hub de organização) vai impactar direto no resultado, oferecemos como solução extra, com escopo e valor próprios.\n👁️ Você decide o que agregar. Tráfego pago e dashboards sempre fazem parte do essencial.' },
+  { q: 'Eu realmente preciso de uma agência para gerenciar meus anúncios?',
     a: 'Sim. Uma agência de tráfego evita desperdício de verba, testa hipóteses com método e otimiza campanhas com base em dados reais, algo difícil de fazer sem experiência dedicada.' },
   { q: 'Consigo anunciar só para clientes na minha região?',
     a: 'Sim, é possível segmentar campanhas por região, bairro ou raio de distância ao redor do seu negócio.' },
@@ -60,18 +60,20 @@ const FAQ_DATA = [
     a: 'Não necessariamente. É possível gerar leads via WhatsApp, formulários ou redes sociais, dependendo da estratégia do seu negócio.' },
   { q: 'Como funciona o contrato e o pagamento?',
     a: 'Trabalhamos com contrato mensal, sem fidelidade de longo prazo, com escopo e valores alinhados na proposta.' },
+  { q: 'O que vocês não oferecem?',
+    a: 'Somos especializados em tráfego pago, então não trabalhamos com social media, criação e postagem de conteúdo no Instagram, produção de identidade visual ou logotipos. Nosso foco é 100% performance: anúncios, dados e conversão.' },
 ]
 
 const INDICACOES = [
   { icon: <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>,
     title: 'Ter um bom comercial',
-    text: 'O tráfego pago atrai as pessoas certas até o seu canal de vendas — mas as vendas dependem do seu processo comercial. Certifique-se de ter um atendimento estruturado e pronto para converter os leads que chegarem.' },
+    text: 'O tráfego pago atrai as pessoas certas até o seu canal de vendas, mas as vendas dependem do seu processo comercial. Certifique-se de ter um atendimento estruturado e pronto para converter os leads que chegarem.' },
   { icon: <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>,
     title: 'Produção de Conteúdo e Redes Sociais',
     text: 'Seu perfil é sua vitrine. Quando os leads do anúncio visitarem seu Instagram ou Facebook, ele precisa ser claro, esteticamente agradável e com conteúdo estratégico que gere confiança. A Insight te auxilia com produção e distribuição estratégica de conteúdo nas redes sociais.' },
   { icon: <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>,
     title: 'Orçamento para anúncios',
-    text: 'Trabalhamos com clientes que já investem ou pretendem investir pelo menos R$1.500/mês em anúncios — esse é o ponto de partida pra ter volume de dados suficiente e resultado consistente.' },
+    text: 'Trabalhamos com clientes que já investem ou pretendem investir pelo menos R$1.500/mês em anúncios. Esse é o ponto de partida pra ter volume de dados suficiente e resultado consistente.' },
 ]
 
 // ── Icons ──
@@ -453,7 +455,7 @@ export default function Home() {
         <div className="bg-[#0c0c0c] py-10 px-5 sm:px-8">
           <div className="max-w-3xl mx-auto">
             <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight mb-2">E isso é o que nos diferencia.</h3>
-            <p className="text-gray-400 text-sm sm:text-base">Não fazemos mil promessas. Fazemos acontecer — com método, rotina de otimização e número na mesa toda semana.</p>
+            <p className="text-gray-400 text-sm sm:text-base">Não fazemos mil promessas. Fazemos acontecer, com método, rotina de otimização e número na mesa toda semana.</p>
           </div>
         </div>
       </section>
@@ -508,7 +510,7 @@ export default function Home() {
             A Insight é pra quem quer ter <span className="text-white">tudo à vista</span> e crescer com <span className="text-white">previsibilidade</span>
           </h2>
           <p className="text-[#0c0c0c]/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            Metodologia própria de gestão de tráfego pago que une estratégia, dados e execução — sem achismo, sem promessa vazia. Cada real investido tem propósito, cada resultado é mensurável, e cada decisão é orientada por número real, não por intuição.
+            Metodologia própria de gestão de tráfego pago que une estratégia, dados e execução, sem achismo, sem promessa vazia. Cada real investido tem propósito, cada resultado é mensurável, e cada decisão é orientada por número real, não por intuição.
           </p>
         </div>
       </section>
@@ -704,8 +706,8 @@ export default function Home() {
           </h2>
 
           {[
-            { num: '01', title: 'Tráfego Pago — Meta Ads', sub: 'Campanhas estratégicas no Facebook e Instagram com foco em geração de leads e crescimento de base.' },
-            { num: '02', title: 'Tráfego Pago — Google Ads', sub: 'Anúncios na rede de pesquisa e display para capturar intenção de compra no momento certo.' },
+            { num: '01', title: 'Tráfego Pago: Meta Ads', sub: 'Campanhas estratégicas no Facebook e Instagram com foco em geração de leads e crescimento de base.' },
+            { num: '02', title: 'Tráfego Pago: Google Ads', sub: 'Anúncios na rede de pesquisa e display para capturar intenção de compra no momento certo.' },
             { num: '03', title: 'Consultoria em Tráfego Pago', sub: 'Diagnóstico estratégico completo com plano de ação personalizado para o seu negócio.' },
             { num: '04', title: 'Relatórios & Performance', sub: 'Relatórios periódicos com KPIs, CPL, ROAS e a progressão histórica dos seus resultados.' },
             { num: '05', title: 'Dashboards Sob Medida', sub: 'Inteligência de dados para acompanhar performance em tempo real e decidir com base em número real.' },
@@ -738,7 +740,7 @@ export default function Home() {
           <div className="text-center mb-8 sm:mb-16">
             <span className="inline-block bg-[#adf01b]/20 border border-[#adf01b]/40 text-[#c3ff3d] text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">O que muda no seu dia</span>
             <h2 className="text-4xl md:text-5xl font-black text-white mt-2">Tudo à <span className="text-[#adf01b]">sua vista</span></h2>
-            <p className="text-gray-400 mt-4 max-w-xl mx-auto leading-relaxed">Não fazemos mil promessas. Fazemos acontecer — com método, rotina de otimização de tráfego pago e número na mesa toda semana.</p>
+            <p className="text-gray-400 mt-4 max-w-xl mx-auto leading-relaxed">Não fazemos mil promessas. Fazemos acontecer, com método, rotina de otimização de tráfego pago e número na mesa toda semana.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {PILARES.map((step, i) => (
@@ -866,7 +868,7 @@ export default function Home() {
               </p>
               <p className="text-gray-600 leading-relaxed mb-4 text-[15px]">
                 {/* TODO: personalize com o histórico real de clientes/verticais da Insight */}
-                Atuamos com negócios dos mais diversos segmentos — segurança, varejo, empreendimentos e serviços — unindo estratégia de mídia paga e tecnologia sob um mesmo teto.
+                Atuamos com negócios dos mais diversos segmentos (segurança, varejo, empreendimentos e serviços), unindo estratégia de mídia paga e tecnologia sob um mesmo teto.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4 text-[15px]">
                 Somos responsáveis por criar, monitorar, analisar e otimizar funis de marketing e campanhas de mídia paga para cada cliente.
