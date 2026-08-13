@@ -47,7 +47,7 @@ const PILARES = [
 
 const FAQ_DATA = [
   { q: 'Eu realmente preciso de um profissional para gerenciar meus anúncios?',
-    a: 'Sim. Um gestor de tráfego evita desperdício de verba, testa hipóteses com método e otimiza campanhas com base em dados reais, algo difícil de fazer sem experiência dedicada.' },
+    a: 'Sim. Uma agência de tráfego evita desperdício de verba, testa hipóteses com método e otimiza campanhas com base em dados reais, algo difícil de fazer sem experiência dedicada.' },
   { q: 'Consigo anunciar só para clientes na minha região?',
     a: 'Sim, é possível segmentar campanhas por região, bairro ou raio de distância ao redor do seu negócio.' },
   { q: 'Qual o investimento mínimo em anúncios para ter resultados?',
