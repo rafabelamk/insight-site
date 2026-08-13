@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, Fragment } from 'react'
 import Image from 'next/image'
 
 const WA = 'https://wa.me/5511961590986?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Insight%20e%20gostaria%20de%20saber%20mais!'
@@ -35,7 +35,7 @@ const LOGOS = [
 
 const PILARES = [
   { num: '01', title: 'Clareza', emoji: '👁️',
-    desc: 'CPA, ROAS, CTR e custo por lead sempre à vista, sem esperar relatório mensal pra saber o que está funcionando na sua campanha.',
+    desc: 'Métricas e custos sempre à vista, sem esperar relatório mensal pra saber o que está funcionando na sua campanha.',
     detail: 'Crescimento com clareza' },
   { num: '02', title: 'Dados', emoji: '📊',
     desc: 'Testamos criativos, públicos e ofertas continuamente. Escalamos o anúncio que converte e pausamos o que só consome verba.',
@@ -47,7 +47,13 @@ const PILARES = [
 
 const FAQ_DATA = [
   { q: 'Como funciona a solução de vocês, na prática?',
-    a: 'Fazemos um diagnóstico completo do seu negócio e dos seus anúncios pra entender o que vai gerar mais resultado pra você.\n\n✅ Base do plano: tráfego pago estratégico + dashboards de acompanhamento.\n🎯 Se identificarmos que outra frente (landing page, criativos, hub de organização) vai impactar direto no resultado, oferecemos como solução extra, com escopo e valor próprios.\n👁️ Você decide o que agregar. Tráfego pago e dashboards sempre fazem parte do essencial.' },
+    intro: 'Fazemos um diagnóstico completo do seu negócio e dos seus anúncios pra entender o que vai gerar mais resultado pra você.',
+    flow: [
+      { emoji: '🔍', title: 'Diagnóstico', desc: 'Analisamos seus anúncios e seu negócio de ponta a ponta' },
+      { emoji: '🎯', title: 'Tráfego pago + Dashboards', desc: 'A base do plano, sempre incluída' },
+      { emoji: '➕', title: 'Extras sob demanda', desc: 'Landing page, criativos ou hub, se fizer sentido pro seu caso' },
+      { emoji: '✅', title: 'Você decide', desc: 'Agrega o que quiser, o essencial já está garantido' },
+    ] },
   { q: 'Eu realmente preciso de uma agência para gerenciar meus anúncios?',
     a: 'Sim. Uma agência de tráfego evita desperdício de verba, testa hipóteses com método e otimiza campanhas com base em dados reais, algo difícil de fazer sem experiência dedicada.' },
   { q: 'Consigo anunciar só para clientes na minha região?',
@@ -897,7 +903,32 @@ export default function Home() {
                   <span className={`text-[#adf01b] text-2xl font-light flex-shrink-0 transition-transform duration-200 ${openFAQ === i ? 'rotate-45' : ''}`}>+</span>
                 </button>
                 {openFAQ === i && (
-                  <div className="px-6 pb-6 text-gray-600 leading-relaxed text-[15px] border-t border-gray-50 pt-4 whitespace-pre-line">{item.a}</div>
+                  <div className="px-6 pb-6 border-t border-gray-50 pt-4">
+                    {item.flow ? (
+                      <>
+                        {item.intro && <p className="text-gray-600 leading-relaxed text-[15px] mb-5">{item.intro}</p>}
+                        <div className="flex flex-col sm:flex-row sm:items-stretch gap-1 sm:gap-1.5">
+                          {item.flow.map((step, si) => (
+                            <Fragment key={si}>
+                              <div className="flex-1 bg-[#f4f4f4] rounded-xl p-4 flex flex-col items-center text-center gap-1.5">
+                                <span className="text-2xl">{step.emoji}</span>
+                                <span className="font-bold text-[#0c0c0c] text-[13px] leading-tight">{step.title}</span>
+                                <span className="text-gray-500 text-xs leading-snug">{step.desc}</span>
+                              </div>
+                              {si < item.flow.length - 1 && (
+                                <div className="flex items-center justify-center text-[#adf01b] text-xl flex-shrink-0 py-1 sm:py-0">
+                                  <span className="sm:hidden">↓</span>
+                                  <span className="hidden sm:inline">→</span>
+                                </div>
+                              )}
+                            </Fragment>
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="text-gray-600 leading-relaxed text-[15px] whitespace-pre-line">{item.a}</div>
+                    )}
+                  </div>
                 )}
               </div>
             ))}
