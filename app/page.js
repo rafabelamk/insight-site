@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 
-// TODO: troque pelo número real de WhatsApp da Insight (formato 55DDDNUMERO)
-const WA = 'https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20an%C3%A1lise%20gratuita!'
+const WA = 'https://wa.me/5511961590986?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20an%C3%A1lise%20gratuita!'
 
 // TODO: ajuste os números para os reais da Insight
 const STATS = [
@@ -312,7 +311,7 @@ export default function Home() {
               <a key={href} href={href} className="text-gray-300 hover:text-white text-sm font-medium transition-colors">{label}</a>
             ))}
             <a href={WA} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#adf01b] hover:bg-[#c3ff3d] text-black px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105">
-              <IconWA className="w-4 h-4"/> Fale comigo
+              <IconWA className="w-4 h-4"/> Fale conosco
             </a>
           </div>
           <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden text-white p-2">
@@ -328,7 +327,7 @@ export default function Home() {
             ))}
             <a href={WA} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)}
                className="flex items-center justify-center gap-2 bg-[#adf01b] text-black px-6 py-3.5 rounded-full font-bold mt-3">
-              <IconWA className="w-5 h-5"/> Falar no WhatsApp
+              <IconWA className="w-5 h-5"/> Fale conosco
             </a>
           </div>
         )}
@@ -426,7 +425,7 @@ export default function Home() {
           </div>
           <a href={WA} target="_blank" rel="noreferrer"
              className="flex-shrink-0 flex items-center gap-2 bg-black hover:bg-gray-900 text-[#adf01b] px-8 py-4 rounded-full font-bold transition-all hover:scale-105">
-            <IconWA className="w-5 h-5"/> Falar no WhatsApp →
+            <IconWA className="w-5 h-5"/> Fale conosco →
           </a>
         </div>
       </section>
