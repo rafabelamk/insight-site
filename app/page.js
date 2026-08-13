@@ -781,13 +781,13 @@ export default function Home() {
                 const longSeq = Array.from({ length: REPEAT }, () => LOGOS).flat()
                 return [...longSeq, ...longSeq]
               })().map((logo, i) => (
-                <div key={i} className="flex flex-col items-center gap-2 flex-shrink-0 w-24">
+                <div key={i} className="flex flex-col items-center gap-2 flex-shrink-0 w-28 px-1">
                   <div className="w-20 h-20 bg-white rounded-[22px] flex items-center justify-center shadow-sm border border-gray-100 overflow-hidden">
                     <div className="relative w-16 h-16 rounded-xl overflow-hidden">
                       <Image src={logo.file} alt={logo.name} fill className="object-cover" sizes="64px"/>
                     </div>
                   </div>
-                  <span className="text-gray-500 text-xs font-medium text-center w-full leading-tight">{logo.name}</span>
+                  <span className="text-gray-500 text-[11px] font-medium text-center w-full leading-tight break-words hyphens-auto">{logo.name}</span>
                 </div>
               ))}
             </div>
