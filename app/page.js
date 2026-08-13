@@ -46,6 +46,8 @@ const PILARES = [
 ]
 
 const FAQ_DATA = [
+  { q: 'Como funciona a solução de vocês, na prática?',
+    a: 'Começamos com um diagnóstico completo dos seus anúncios e do seu negócio, de ponta a ponta, pra entender exatamente onde está o gargalo e qual a melhor solução pro seu caso. A partir disso, montamos um plano de ação com tráfego pago estratégico e dashboards de acompanhamento — essa é a base do nosso trabalho. Se identificarmos que outras frentes vão impactar diretamente no resultado, como landing page, criativos ou um hub de organização (montamos um ClickUp personalizado pra você acompanhar tudo), oferecemos essas soluções separadamente, com escopo e valor próprios. Você decide o que agregar; o plano de tráfego e os dashboards já fazem parte do essencial.' },
   { q: 'Eu realmente preciso de um profissional para gerenciar meus anúncios?',
     a: 'Sim. Uma agência de tráfego evita desperdício de verba, testa hipóteses com método e otimiza campanhas com base em dados reais, algo difícil de fazer sem experiência dedicada.' },
   { q: 'Consigo anunciar só para clientes na minha região?',
@@ -521,7 +523,7 @@ export default function Home() {
             Especializados para<br/><span className="text-[#adf01b]">impulsionar seu negócio</span>
           </h2>
           <p className="text-gray-500 text-center mb-6 sm:mb-14 max-w-xl mx-auto">Gestão completa nas plataformas que mais convertem, com estratégia e dados reais.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
             <div className="reveal-anim bg-white rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '0ms'}}>
               <div className="mb-4 w-14 h-14 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)'}}>
                 <IconIG className="w-7 h-7 text-white"/>
@@ -568,6 +570,18 @@ export default function Home() {
               </div>
               <span className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Desenvolvimento</span>
               <h3 className="text-[#0c0c0c] font-black text-base leading-tight">Landing Pages focadas em conversão</h3>
+            </div>
+            <div className="reveal-anim bg-white rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '450ms'}}>
+              <div className="mb-4 w-14 h-14 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#1c2b4b,#3a5a99)'}}>
+                <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                  <rect x="3" y="3" width="8" height="10" rx="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <rect x="13" y="3" width="8" height="6" rx="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <rect x="13" y="11" width="8" height="10" rx="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <rect x="3" y="15" width="8" height="6" rx="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Organização</span>
+              <h3 className="text-[#0c0c0c] font-black text-base leading-tight">Hub e Dashboards de Performance</h3>
             </div>
           </div>
         </div>
@@ -696,7 +710,9 @@ export default function Home() {
             { num: '04', title: 'Relatórios & Performance', sub: 'Relatórios periódicos com KPIs, CPL, ROAS e a progressão histórica dos seus resultados.' },
             { num: '05', title: 'Dashboards Sob Medida', sub: 'Inteligência de dados para acompanhar performance em tempo real e decidir com base em número real.' },
             { num: '06', title: 'Landing Pages de Alta Conversão', sub: 'Página feita pra uma coisa só: virar lead. Estrutura, copy, velocidade e teste até o custo cair.' },
-            { num: '07', title: 'Rastreamento de Conversões', sub: 'Google Tag Manager e Pixel do Meta instalados, testados e validados. Sem conversão perdida, sem número inventado.' },
+            { num: '07', title: 'Criativos de Conversão', sub: 'Imagens e vídeos de anúncio pensados pra performance, testados e otimizados pra reduzir custo por resultado.' },
+            { num: '08', title: 'Rastreamento de Conversões', sub: 'Google Tag Manager e Pixel do Meta instalados, testados e validados. Sem conversão perdida, sem número inventado.' },
+            { num: '09', title: 'Hub do Cliente', sub: 'Um espaço organizado (modelo ClickUp) só seu, com tarefas, entregas e status do projeto sempre à mão.' },
           ].map((item, i, arr) => (
             <div key={i} style={{animationDelay: `${i * 70}ms`}} className={`reveal-anim flex items-start gap-5 py-7 group cursor-default transition-all ${i < arr.length - 1 ? 'border-b border-white/10 hover:border-white/25' : ''}`}>
               <span className="text-gray-600 text-sm font-bold w-8 flex-shrink-0 pt-1">{item.num}</span>
