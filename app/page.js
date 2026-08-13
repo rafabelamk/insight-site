@@ -355,17 +355,11 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-4">
-                {/* Meta Ads — fundo branco, símbolo ∞ gradiente azul oficial */}
+                {/* Meta Ads — fundo branco, logo oficial */}
                 <span className="flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide" style={{background:'white',color:'#1c2b4b'}}>
-                  <svg style={{width:'18px',height:'11px',flexShrink:0}} viewBox="0 0 60 36" fill="none">
-                    <defs>
-                      <linearGradient id="meta-g" x1="0" y1="18" x2="60" y2="18" gradientUnits="userSpaceOnUse">
-                        <stop offset="0%" stopColor="#0082FB"/>
-                        <stop offset="100%" stopColor="#00B2FF"/>
-                      </linearGradient>
-                    </defs>
-                    <path d="M15 3C8.4 3 3 10.3 3 18s5.4 15 12 15c4.5 0 9-4 12-9.6C30 29 34.5 33 39 33c6.6 0 12-6.7 12-15S45.6 3 39 3c-4.5 0-9 4-12 9.6C24 7 19.5 3 15 3z" fill="url(#meta-g)"/>
-                  </svg>
+                  <span className="relative" style={{width:'16px',height:'16px',flexShrink:0}}>
+                    <Image src="/logos/meta-icon.png" alt="Meta" fill className="object-contain"/>
+                  </span>
                   Meta Ads
                 </span>
                 {/* Google Ads — fundo branco, ícone GA colorido */}
