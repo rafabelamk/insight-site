@@ -55,8 +55,6 @@ const INSTAGRAM_POSTS = [
   { type: 'carousel',
     caption: 'Isso é InSight 👁️\n\n#marketingdigital #trafegopago #growthmarketing',
     images: Array.from({length: 8}, (_, i) => `/instagram/post-2/slide-${String(i+1).padStart(2,'0')}.png`) },
-  { type: 'link', link: 'https://www.instagram.com/p/Db8y4-9mwTH/' },
-  { type: 'link', link: 'https://www.instagram.com/p/Db803nNm8dP/' },
 ]
 
 const FAQ_DATA = [
@@ -931,42 +929,19 @@ export default function Home() {
 
           {INSTAGRAM_POSTS.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-              {INSTAGRAM_POSTS.map((post, i) => {
-                const gradients = [
-                  'linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)',
-                  'linear-gradient(135deg,#0c0c0c,#2b2b2b)',
-                  'linear-gradient(135deg,#adf01b,#7ac400)',
-                  'linear-gradient(135deg,#3a5a99,#1c2b4b)',
-                ]
-                if (post.type === 'carousel') {
-                  return (
-                    <button key={i} onClick={() => { setOpenPost(i); setSlideIndex(0) }}
-                       className="group relative aspect-square rounded-xl overflow-hidden block">
-                      <Image src={post.images[0]} alt={post.caption || 'Post Insight'} fill className="object-cover transition-transform duration-300 group-hover:scale-105"/>
-                      <div className="absolute top-2 right-2 bg-black/50 rounded-full px-2 py-0.5 flex items-center gap-1">
-                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/></svg>
-                        <span className="text-white text-[10px] font-bold">{post.images.length}</span>
-                      </div>
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <IconIG className="w-6 h-6 text-white"/>
-                      </div>
-                    </button>
-                  )
-                }
-                return (
-                  <a key={i} href={post.link} target="_blank" rel="noreferrer"
-                     className="group relative aspect-square rounded-xl overflow-hidden block"
-                     style={{background: gradients[i % gradients.length]}}>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Image src="/logos/eye-icon.png" alt="" width={100} height={100} className="w-1/2 h-auto object-contain opacity-90"/>
-                    </div>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors flex flex-col items-center justify-center gap-1.5 opacity-0 group-hover:opacity-100">
-                      <IconIG className="w-6 h-6 text-white"/>
-                      <span className="text-white text-xs font-bold">Ver no Instagram</span>
-                    </div>
-                  </a>
-                )
-              })}
+              {INSTAGRAM_POSTS.map((post, i) => (
+                <button key={i} onClick={() => { setOpenPost(i); setSlideIndex(0) }}
+                   className="group relative aspect-square rounded-xl overflow-hidden block">
+                  <Image src={post.images[0]} alt={post.caption || 'Post Insight'} fill className="object-cover transition-transform duration-300 group-hover:scale-105"/>
+                  <div className="absolute top-2 right-2 bg-black/50 rounded-full px-2 py-0.5 flex items-center gap-1">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/></svg>
+                    <span className="text-white text-[10px] font-bold">{post.images.length}</span>
+                  </div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <IconIG className="w-6 h-6 text-white"/>
+                  </div>
+                </button>
+              ))}
             </div>
           ) : (
             <a href="https://www.instagram.com/1sightmkt/" target="_blank" rel="noreferrer"
@@ -981,31 +956,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LIGHTBOX DO CARROSSEL */}
-      {openPost !== null && INSTAGRAM_POSTS[openPost]?.type === 'carousel' && (() => {
+      {/* LIGHTBOX — simula o card de post do Instagram, feito localmente */}
+      {openPost !== null && INSTAGRAM_POSTS[openPost] && (() => {
         const post = INSTAGRAM_POSTS[openPost]
         const total = post.images.length
         const goPrev = () => setSlideIndex(s => (s - 1 + total) % total)
         const goNext = () => setSlideIndex(s => (s + 1) % total)
+        const [firstLine, ...restLines] = (post.caption || '').split('\n\n')
         return (
-          <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setOpenPost(null)}>
-            <div className="relative max-w-sm w-full" onClick={e => e.stopPropagation()}>
-              <button onClick={() => setOpenPost(null)} className="absolute -top-10 right-0 text-white/80 hover:text-white text-2xl leading-none">✕</button>
-              <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-[#0c0c0c]">
+          <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onClick={() => setOpenPost(null)}>
+            <div className="relative max-w-sm w-full bg-[#0c0c0c] rounded-2xl overflow-hidden border border-white/10" onClick={e => e.stopPropagation()}>
+              {/* Header */}
+              <div className="flex items-center justify-between px-3.5 py-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{background:'linear-gradient(135deg,#adf01b,#c3ff3d)', padding:'2px'}}>
+                    <div className="w-full h-full rounded-full overflow-hidden">
+                      <Image src="/logos/eye-icon.png" alt="Insight" width={32} height={32} className="w-full h-full object-cover"/>
+                    </div>
+                  </div>
+                  <span className="text-white text-[13px] font-bold">1sightmkt</span>
+                </div>
+                <button onClick={() => setOpenPost(null)} className="text-white/70 hover:text-white text-xl leading-none px-1">✕</button>
+              </div>
+
+              {/* Imagem / carrossel */}
+              <div className="relative aspect-square bg-black">
                 <Image src={post.images[slideIndex]} alt={`Slide ${slideIndex + 1}`} fill className="object-cover"/>
                 {slideIndex > 0 && (
-                  <button onClick={goPrev} className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg">‹</button>
+                  <button onClick={goPrev} className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full w-7 h-7 flex items-center justify-center text-base shadow">‹</button>
                 )}
                 {slideIndex < total - 1 && (
-                  <button onClick={goNext} className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg">›</button>
+                  <button onClick={goNext} className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full w-7 h-7 flex items-center justify-center text-base shadow">›</button>
+                )}
+                {total > 1 && (
+                  <div className="absolute bottom-2.5 left-0 right-0 flex items-center justify-center gap-1">
+                    {post.images.map((_, si) => (
+                      <div key={si} className={`rounded-full transition-all ${si === slideIndex ? 'w-1.5 h-1.5 bg-white' : 'w-1 h-1 bg-white/50'}`}/>
+                    ))}
+                  </div>
                 )}
               </div>
-              <div className="flex gap-1 mt-3">
-                {post.images.map((_, si) => (
-                  <div key={si} className={`h-1 flex-1 rounded-full ${si === slideIndex ? 'bg-[#adf01b]' : 'bg-white/25'}`}/>
-                ))}
+
+              {/* Ações */}
+              <div className="flex items-center justify-between px-3.5 pt-3 pb-1">
+                <div className="flex items-center gap-4">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </div>
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M19 21 12 16l-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
               </div>
-              {post.caption && <p className="text-white text-sm mt-3 whitespace-pre-line">{post.caption}</p>}
+
+              {/* Legenda */}
+              {post.caption && (
+                <div className="px-3.5 pb-4 pt-1">
+                  <p className="text-white text-[13px] leading-relaxed">
+                    <span className="font-bold">1sightmkt</span> {firstLine}
+                  </p>
+                  {restLines.map((line, li) => (
+                    <p key={li} className="text-[#4a9eff] text-[13px] mt-1">{line}</p>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )
