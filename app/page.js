@@ -54,6 +54,8 @@ const FAQ_DATA = [
       { emoji: '➕', title: 'Extras sob demanda', desc: 'Landing page, criativos ou hub, se fizer sentido pro seu caso' },
       { emoji: '✅', title: 'Você decide', desc: 'Agrega o que quiser, o essencial já está garantido' },
     ] },
+  { q: 'O que vocês não oferecem?',
+    a: 'Somos especializados em tráfego pago, então não trabalhamos com social media, criação e postagem de conteúdo no Instagram, produção de identidade visual ou logotipos. Nosso foco é 100% performance: anúncios, dados e conversão.' },
   { q: 'Eu realmente preciso de uma agência para gerenciar meus anúncios?',
     a: 'Sim. Uma agência de tráfego evita desperdício de verba, testa hipóteses com método e otimiza campanhas com base em dados reais, algo difícil de fazer sem experiência dedicada.' },
   { q: 'Consigo anunciar só para clientes na minha região?',
@@ -66,8 +68,6 @@ const FAQ_DATA = [
     a: 'Não necessariamente. É possível gerar leads via WhatsApp, formulários ou redes sociais, dependendo da estratégia do seu negócio.' },
   { q: 'Como funciona o contrato e o pagamento?',
     a: 'Trabalhamos com contrato mensal, sem fidelidade de longo prazo, com escopo e valores alinhados na proposta.' },
-  { q: 'O que vocês não oferecem?',
-    a: 'Somos especializados em tráfego pago, então não trabalhamos com social media, criação e postagem de conteúdo no Instagram, produção de identidade visual ou logotipos. Nosso foco é 100% performance: anúncios, dados e conversão.' },
 ]
 
 const INDICACOES = [
