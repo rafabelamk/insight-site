@@ -35,13 +35,13 @@ const LOGOS = [
 
 const PILARES = [
   { num: '01', title: 'Clareza', emoji: '👁️',
-    desc: 'Dados claros e abertos. Autonomia pra decidir com segurança.',
+    desc: 'CPA, ROAS, CTR e custo por lead sempre à vista — sem esperar relatório mensal pra saber o que está funcionando na sua campanha.',
     detail: 'Crescimento com clareza' },
   { num: '02', title: 'Dados', emoji: '📊',
-    desc: 'A gente corta o que não tem performance e melhora o que já está bom.',
+    desc: 'Testamos criativos, públicos e ofertas continuamente. Escalamos o anúncio que converte e pausamos o que só consome verba.',
     detail: 'Decisões com dados reais' },
   { num: '03', title: 'Contexto', emoji: '🔎',
-    desc: 'A gente entrega os números que mandam no seu resultado e o que vai ser feito a partir deles.',
+    desc: 'Entregamos os números que realmente importam pro seu negócio — CPL, ROAS, custo por venda — junto com o próximo passo pra cada um.',
     detail: 'Métricas sem contexto são ruído. Dados com clareza são ouro.' },
 ]
 
@@ -521,55 +521,53 @@ export default function Home() {
             Especializados para<br/><span className="text-[#adf01b]">impulsionar seu negócio</span>
           </h2>
           <p className="text-gray-500 text-center mb-6 sm:mb-14 max-w-xl mx-auto">Gestão completa nas plataformas que mais convertem, com estratégia e dados reais.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '0ms'}}>
-              <div className="mb-5 w-16 h-16 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)'}}>
-                <IconIG className="w-8 h-8 text-white"/>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="reveal-anim bg-white rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '0ms'}}>
+              <div className="mb-4 w-14 h-14 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)'}}>
+                <IconIG className="w-7 h-7 text-white"/>
               </div>
-              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Tráfego Pago</span>
-              <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Instagram Ads e Facebook Ads</h3>
+              <span className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Tráfego Pago</span>
+              <h3 className="text-[#0c0c0c] font-black text-base leading-tight">Instagram Ads e Facebook Ads</h3>
             </div>
-            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '90ms'}}>
-              <div className="mb-5 w-16 h-16 bg-white rounded-2xl border-2 border-gray-100 flex items-center justify-center shadow-sm">
-                <svg className="w-9 h-9" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <div className="reveal-anim bg-white rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '90ms'}}>
+              <div className="mb-4 w-14 h-14 bg-white rounded-2xl border-2 border-gray-100 flex items-center justify-center shadow-sm">
+                <svg className="w-7 h-7" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
               </div>
-              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Tráfego Pago</span>
-              <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Google Ads</h3>
+              <span className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Tráfego Pago</span>
+              <h3 className="text-[#0c0c0c] font-black text-base leading-tight">Google Ads</h3>
             </div>
-            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '180ms'}}>
-              <div className="mb-5 w-16 h-16 bg-[#f4f4f4] rounded-2xl flex items-center justify-center">
+            <div className="reveal-anim bg-white rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '180ms'}}>
+              <div className="mb-4 w-14 h-14 bg-[#f4f4f4] rounded-2xl flex items-center justify-center">
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{background:'linear-gradient(135deg,#f09433,#dc2743,#bc1888)'}}><IconIG className="w-4 h-4 text-white"/></div>
-                  <div className="w-8 h-8 rounded-full bg-[#1877f2] flex items-center justify-center border-2 border-white"><svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{background:'linear-gradient(135deg,#f09433,#dc2743,#bc1888)'}}><IconIG className="w-3.5 h-3.5 text-white"/></div>
+                  <div className="w-7 h-7 rounded-full bg-[#1877f2] flex items-center justify-center border-2 border-white"><svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
                 </div>
               </div>
-              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Criação</span>
-              <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Criativos em imagem de ads focados em conversão</h3>
+              <span className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Criação</span>
+              <h3 className="text-[#0c0c0c] font-black text-base leading-tight">Criativos em imagem de ads focados em conversão</h3>
             </div>
-            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '270ms'}}>
-              <div className="mb-5 w-16 h-16 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#adf01b,#c3ff3d)'}}>
-                <svg className="w-9 h-9 text-white" fill="none" viewBox="0 0 36 36" stroke="currentColor" strokeWidth="1.6">
-                  <rect x="5" y="12" width="26" height="18" rx="2.5" strokeLinecap="round"/>
-                  <path d="M12 12V9a6 6 0 0112 0v3" strokeLinecap="round"/>
-                  <path d="M10 20h4M22 20h4M10 26h4M22 26h4M17 20h2M17 26h2" strokeLinecap="round"/>
-                  <circle cx="18" cy="23" r="2.5" fill="currentColor" stroke="none" opacity="0.3"/>
-                  <path d="M14 23h8" strokeLinecap="round" opacity="0.5"/>
+            <div className="reveal-anim bg-white rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '270ms'}}>
+              <div className="mb-4 w-14 h-14 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#adf01b,#c3ff3d)'}}>
+                <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                  <circle cx="12" cy="12" r="9" strokeLinecap="round"/>
+                  <circle cx="12" cy="12" r="5" strokeLinecap="round"/>
+                  <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/>
                 </svg>
               </div>
-              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Consultoria</span>
-              <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Consultoria em Tráfego Pago</h3>
+              <span className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Consultoria</span>
+              <h3 className="text-[#0c0c0c] font-black text-base leading-tight">Consultoria em Tráfego Pago</h3>
             </div>
-            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '360ms'}}>
-              <div className="mb-5 w-16 h-16 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#0c0c0c,#2b2b2b)'}}>
-                <svg className="w-8 h-8 text-[#adf01b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <div className="reveal-anim bg-white rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '360ms'}}>
+              <div className="mb-4 w-14 h-14 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#0c0c0c,#2b2b2b)'}}>
+                <svg className="w-7 h-7 text-[#adf01b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
                   <rect x="3" y="4" width="18" height="16" rx="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M3 8h18" strokeLinecap="round"/>
                   <circle cx="6" cy="6" r="0.6" fill="currentColor" stroke="none"/>
                   <path d="M7 12h6M7 15h10M7 18h4" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Desenvolvimento</span>
-              <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Landing Pages focadas em conversão</h3>
+              <span className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Desenvolvimento</span>
+              <h3 className="text-[#0c0c0c] font-black text-base leading-tight">Landing Pages focadas em conversão</h3>
             </div>
           </div>
         </div>
@@ -724,7 +722,7 @@ export default function Home() {
           <div className="text-center mb-8 sm:mb-16">
             <span className="inline-block bg-[#adf01b]/20 border border-[#adf01b]/40 text-[#c3ff3d] text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">O que muda no seu dia</span>
             <h2 className="text-4xl md:text-5xl font-black text-white mt-2">Tudo à <span className="text-[#adf01b]">sua vista</span></h2>
-            <p className="text-gray-400 mt-4 max-w-xl mx-auto leading-relaxed">Não fazemos mil promessas. Fazemos acontecer — com método, rotina de otimização e número na mesa toda semana.</p>
+            <p className="text-gray-400 mt-4 max-w-xl mx-auto leading-relaxed">Não fazemos mil promessas. Fazemos acontecer — com método, rotina de otimização de tráfego pago e número na mesa toda semana.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {PILARES.map((step, i) => (
