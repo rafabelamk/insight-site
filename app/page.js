@@ -45,6 +45,20 @@ const PILARES = [
     detail: 'Métricas sem contexto são ruído. Dados com clareza são ouro.' },
 ]
 
+// Posts em destaque do Instagram — @1sightmkt
+// Pra post-carrossel: type 'carousel' com array de images (na ordem) + caption.
+// Pra post já publicado com link: type 'link' com o link do post.
+const INSTAGRAM_POSTS = [
+  { type: 'carousel',
+    caption: 'Tenha um InSight hoje 👁️',
+    images: Array.from({length: 14}, (_, i) => `/instagram/post-1/slide-${String(i+1).padStart(2,'0')}.png`) },
+  { type: 'carousel',
+    caption: 'Isso é InSight 👁️\n\n#marketingdigital #trafegopago #growthmarketing',
+    images: Array.from({length: 8}, (_, i) => `/instagram/post-2/slide-${String(i+1).padStart(2,'0')}.png`) },
+  { type: 'link', link: 'https://www.instagram.com/p/Db8y4-9mwTH/' },
+  { type: 'link', link: 'https://www.instagram.com/p/Db803nNm8dP/' },
+]
+
 const FAQ_DATA = [
   { q: 'Como funciona a solução de vocês, na prática?',
     intro: 'Fazemos um diagnóstico completo do seu negócio e dos seus anúncios pra entender o que vai gerar mais resultado pra você.',
@@ -190,6 +204,8 @@ export default function Home() {
   const [openFAQ, setOpenFAQ] = useState(null)
   const [checkedFit, setCheckedFit] = useState([])
   const [scrolled, setScrolled] = useState(false)
+  const [openPost, setOpenPost] = useState(null)
+  const [slideIndex, setSlideIndex] = useState(0)
 
   const logosRef = useRef(null)
 
@@ -842,7 +858,7 @@ export default function Home() {
                 <Image src="/logos/eye-icon.png" alt="Insight" width={280} height={280} className="w-full h-auto max-w-[220px] object-contain"/>
                 {/* TODO: confirme o @ correto do Instagram da Insight */}
                 <div className="absolute bottom-6 left-6 right-6 bg-[#adf01b] rounded-xl p-4">
-                  <p className="text-black font-bold text-sm">@1sightmkt</p>
+                  <a href="https://www.instagram.com/1sightmkt/" target="_blank" rel="noreferrer" className="text-black font-bold text-sm hover:underline">@1sightmkt</a>
                   <p className="text-black/70 text-xs">Tráfego Pago · Conteúdo · Tecnologia</p>
                 </div>
               </div>
@@ -887,7 +903,113 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* INSTAGRAM FEED */}
+      <section className="bg-[#f4f4f4] pb-10 sm:pb-16 px-5 sm:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl sm:text-3xl font-black text-[#0c0c0c] mt-2">Confira nosso Instagram</h3>
+          </div>
+
+          {/* Cartão de perfil (simulação visual, não é um embed real) */}
+          <div className="bg-[#0c0c0c] rounded-2xl p-5 sm:p-6 mb-6 flex items-center gap-4 sm:gap-6 max-w-xl mx-auto">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center flex-shrink-0" style={{background:'linear-gradient(135deg,#adf01b,#c3ff3d)', padding:'3px'}}>
+              <div className="w-full h-full rounded-full overflow-hidden border-2 border-[#0c0c0c]">
+                <Image src="/logos/eye-icon.png" alt="Insight" width={80} height={80} className="w-full h-full object-cover"/>
+              </div>
+            </div>
+            <div className="flex-1 min-w-0">
+              <a href="https://www.instagram.com/1sightmkt/" target="_blank" rel="noreferrer" className="text-white font-bold text-base hover:underline">1sightmkt</a>
+              <p className="text-gray-400 text-sm">Insight Marketing</p>
+              <div className="text-gray-300 text-xs sm:text-[13px] leading-relaxed mt-1.5 space-y-0.5">
+                <p>👁️ Tenha um InSight hoje</p>
+                <p>📊 Soluções em Tráfego Pago</p>
+                <p>💡 Inteligência de Dados</p>
+                <p>🌐 "Em Deus confiamos, todos os outros tragam dados"</p>
+              </div>
+            </div>
+          </div>
+
+          {INSTAGRAM_POSTS.length > 0 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+              {INSTAGRAM_POSTS.map((post, i) => {
+                const gradients = [
+                  'linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)',
+                  'linear-gradient(135deg,#0c0c0c,#2b2b2b)',
+                  'linear-gradient(135deg,#adf01b,#7ac400)',
+                  'linear-gradient(135deg,#3a5a99,#1c2b4b)',
+                ]
+                if (post.type === 'carousel') {
+                  return (
+                    <button key={i} onClick={() => { setOpenPost(i); setSlideIndex(0) }}
+                       className="group relative aspect-square rounded-xl overflow-hidden block">
+                      <Image src={post.images[0]} alt={post.caption || 'Post Insight'} fill className="object-cover transition-transform duration-300 group-hover:scale-105"/>
+                      <div className="absolute top-2 right-2 bg-black/50 rounded-full px-2 py-0.5 flex items-center gap-1">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/></svg>
+                        <span className="text-white text-[10px] font-bold">{post.images.length}</span>
+                      </div>
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <IconIG className="w-6 h-6 text-white"/>
+                      </div>
+                    </button>
+                  )
+                }
+                return (
+                  <a key={i} href={post.link} target="_blank" rel="noreferrer"
+                     className="group relative aspect-square rounded-xl overflow-hidden block"
+                     style={{background: gradients[i % gradients.length]}}>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Image src="/logos/eye-icon.png" alt="" width={100} height={100} className="w-1/2 h-auto object-contain opacity-90"/>
+                    </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors flex flex-col items-center justify-center gap-1.5 opacity-0 group-hover:opacity-100">
+                      <IconIG className="w-6 h-6 text-white"/>
+                      <span className="text-white text-xs font-bold">Ver no Instagram</span>
+                    </div>
+                  </a>
+                )
+              })}
+            </div>
+          ) : (
+            <a href="https://www.instagram.com/1sightmkt/" target="_blank" rel="noreferrer"
+               className="flex flex-col items-center justify-center gap-3 bg-white border border-gray-100 rounded-2xl py-14 px-6 text-center shadow-sm hover:shadow-lg transition-all">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)'}}>
+                <IconIG className="w-6 h-6 text-white"/>
+              </div>
+              <p className="text-[#0c0c0c] font-bold">Acompanhe nossos posts em @1sightmkt</p>
+              <span className="text-gray-500 text-sm">Toque para abrir o Instagram</span>
+            </a>
+          )}
+        </div>
+      </section>
+
+      {/* LIGHTBOX DO CARROSSEL */}
+      {openPost !== null && INSTAGRAM_POSTS[openPost]?.type === 'carousel' && (() => {
+        const post = INSTAGRAM_POSTS[openPost]
+        const total = post.images.length
+        const goPrev = () => setSlideIndex(s => (s - 1 + total) % total)
+        const goNext = () => setSlideIndex(s => (s + 1) % total)
+        return (
+          <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setOpenPost(null)}>
+            <div className="relative max-w-sm w-full" onClick={e => e.stopPropagation()}>
+              <button onClick={() => setOpenPost(null)} className="absolute -top-10 right-0 text-white/80 hover:text-white text-2xl leading-none">✕</button>
+              <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-[#0c0c0c]">
+                <Image src={post.images[slideIndex]} alt={`Slide ${slideIndex + 1}`} fill className="object-cover"/>
+                {slideIndex > 0 && (
+                  <button onClick={goPrev} className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg">‹</button>
+                )}
+                {slideIndex < total - 1 && (
+                  <button onClick={goNext} className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg">›</button>
+                )}
+              </div>
+              <div className="flex gap-1 mt-3">
+                {post.images.map((_, si) => (
+                  <div key={si} className={`h-1 flex-1 rounded-full ${si === slideIndex ? 'bg-[#adf01b]' : 'bg-white/25'}`}/>
+                ))}
+              </div>
+              {post.caption && <p className="text-white text-sm mt-3 whitespace-pre-line">{post.caption}</p>}
+            </div>
+          </div>
+        )
+      })()}
       <section id="faq" className="bg-[#f4f4f4] py-8 sm:py-14 px-5 sm:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8 sm:mb-16">
