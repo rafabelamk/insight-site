@@ -12,21 +12,35 @@ const STATS = [
   { value: '360°', label: 'Conteúdo, tráfego e tecnologia integrados' },
 ]
 
-// TODO: troque os placeholders "otica-rio-branco.png" e "terra-milia.png" pelos logos reais
 const LOGOS = [
-  { name: 'Orsegups', file: '/logos/orsegups.png' },
-  { name: 'Ótica Rio Branco', file: '/logos/otica-rio-branco.png' },
-  { name: 'Terra Milia', file: '/logos/terra-milia.png' },
+  { name: '@orsegups', file: '/logos/orsegups.png' },
+  { name: '@santewellnessoficial', file: '/logos/santewelness.png' },
+  { name: '@verenaoficial', file: '/logos/verenacordeiro.png' },
+  { name: '@andremenezes', file: '/logos/andremenezes.png' },
+  { name: '@janguiediniz', file: '/logos/janguiediniz.png' },
+  { name: '@fillrocha', file: '/logos/fillrocha.png' },
+  { name: '@marcolang.com.br', file: '/logos/marcolang.png' },
+  { name: '@wendellcarvalho', file: '/logos/wendellcarvalho.png' },
+  { name: '@berudolph', file: '/logos/berudolph.png' },
+  { name: '@leandroferrari', file: '/logos/leandroferrari.png' },
+  { name: '@flaviarochadepil', file: '/logos/flaviarochadepil.png' },
+  { name: '@anwar.hermuche', file: '/logos/anwarhermuche.png' },
+  { name: '@drabelguerra', file: '/logos/drabelguerra.png' },
+  { name: '@hyagoilha', file: '/logos/hyagoilha.png' },
+  { name: '@joaommenna', file: '/logos/joaommenna.png' },
+  { name: '@priscilladantas.agro', file: '/logos/priscilladantas.png' },
+  { name: '@professor_salomao', file: '/logos/professorsalomao.png' },
+  { name: '@audicenter.florianopolis', file: '/logos/audi.png' },
 ]
 
 const PILARES = [
-  { num: '01', title: 'Clareza', emoji: '🔎',
+  { num: '01', title: 'Clareza', emoji: '👁️',
     desc: 'Dados claros e abertos. Autonomia pra decidir com segurança.',
     detail: 'Crescimento com clareza' },
   { num: '02', title: 'Dados', emoji: '📊',
     desc: 'A gente corta o que não tem performance e melhora o que já está bom.',
     detail: 'Decisões com dados reais' },
-  { num: '03', title: 'Contexto', emoji: '🥇',
+  { num: '03', title: 'Contexto', emoji: '🔎',
     desc: 'A gente entrega os números que mandam no seu resultado e o que vai ser feito a partir deles.',
     detail: 'Métricas sem contexto são ruído. Dados com clareza são ouro.' },
 ]
@@ -551,6 +565,18 @@ export default function Home() {
               <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Consultoria</span>
               <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Consultoria em Tráfego Pago</h3>
             </div>
+            <div className="reveal-anim bg-white rounded-2xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border border-gray-100" style={{animationDelay: '360ms'}}>
+              <div className="mb-5 w-16 h-16 rounded-2xl flex items-center justify-center" style={{background:'linear-gradient(135deg,#0c0c0c,#2b2b2b)'}}>
+                <svg className="w-8 h-8 text-[#adf01b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                  <rect x="3" y="4" width="18" height="16" rx="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3 8h18" strokeLinecap="round"/>
+                  <circle cx="6" cy="6" r="0.6" fill="currentColor" stroke="none"/>
+                  <path d="M7 12h6M7 15h10M7 18h4" strokeLinecap="round"/>
+                </svg>
+              </div>
+              <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Desenvolvimento</span>
+              <h3 className="text-[#0c0c0c] font-black text-lg leading-tight">Landing Pages focadas em conversão</h3>
+            </div>
           </div>
         </div>
       </section>
@@ -746,12 +772,12 @@ export default function Home() {
           </div>
           {/* Marquee automático */}
           <div ref={logosRef} className="overflow-hidden -mx-5 sm:-mx-8 cursor-grab select-none" style={{overflowX:'auto',scrollbarWidth:'none'}}>
-            <div className="marquee-inner" style={{animationDuration: '46s'}}>
+            <div className="marquee-inner" style={{animationDuration: '90s'}}>
               {(() => {
                 // repete o conjunto de logos várias vezes para garantir que cada metade
                 // da faixa seja mais larga que a tela, e só então duplica — isso é o que
                 // faz o loop de -50% fechar sem "pulo" nem trecho vazio no final
-                const REPEAT = 6
+                const REPEAT = 2
                 const longSeq = Array.from({ length: REPEAT }, () => LOGOS).flat()
                 return [...longSeq, ...longSeq]
               })().map((logo, i) => (
