@@ -47,7 +47,7 @@ const PILARES = [
 
 const FAQ_DATA = [
   { q: 'Como funciona a solução de vocês, na prática?',
-    a: 'Começamos com um diagnóstico completo dos seus anúncios e do seu negócio, de ponta a ponta, pra entender exatamente onde está o gargalo e qual a melhor solução pro seu caso. A partir disso, montamos um plano de ação com tráfego pago estratégico e dashboards de acompanhamento — essa é a base do nosso trabalho. Se identificarmos que outras frentes vão impactar diretamente no resultado, como landing page, criativos ou um hub de organização (montamos um ClickUp personalizado pra você acompanhar tudo), oferecemos essas soluções separadamente, com escopo e valor próprios. Você decide o que agregar; o plano de tráfego e os dashboards já fazem parte do essencial.' },
+    a: 'Fazemos um diagnóstico completo do seu negócio e dos seus anúncios pra entender o que vai gerar mais resultado pra você.\n\n✅ Base do plano: tráfego pago estratégico + dashboards de acompanhamento.\n🎯 Se identificarmos que outra frente (landing page, criativos, hub de organização) vai impactar direto no resultado, oferecemos como solução extra, com escopo e valor próprios.\n👁️ Você decide o que agregar — tráfego pago e dashboards sempre fazem parte do essencial.' },
   { q: 'Eu realmente preciso de um profissional para gerenciar meus anúncios?',
     a: 'Sim. Uma agência de tráfego evita desperdício de verba, testa hipóteses com método e otimiza campanhas com base em dados reais, algo difícil de fazer sem experiência dedicada.' },
   { q: 'Consigo anunciar só para clientes na minha região?',
@@ -895,7 +895,7 @@ export default function Home() {
                   <span className={`text-[#adf01b] text-2xl font-light flex-shrink-0 transition-transform duration-200 ${openFAQ === i ? 'rotate-45' : ''}`}>+</span>
                 </button>
                 {openFAQ === i && (
-                  <div className="px-6 pb-6 text-gray-600 leading-relaxed text-[15px] border-t border-gray-50 pt-4">{item.a}</div>
+                  <div className="px-6 pb-6 text-gray-600 leading-relaxed text-[15px] border-t border-gray-50 pt-4 whitespace-pre-line">{item.a}</div>
                 )}
               </div>
             ))}
