@@ -2,31 +2,44 @@
 
 import { useState, useEffect, useRef, useCallback, Fragment } from 'react'
 import Image from 'next/image'
+import Script from 'next/script'
 
 const WA = 'https://wa.me/5511961590986?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Insight%20e%20gostaria%20de%20saber%20mais!'
 
 // Embed do formulário Respondi
 function RespondiForm() {
+  const containerRef = useRef(null)
+
+  // Se o script já estiver carregado (ex: navegação client-side) e a lib
+  // expuser um método de (re)inicialização, chama na montagem do componente.
   useEffect(() => {
-    if (!document.querySelector('#respondi_src')) {
-      const script = document.createElement('script')
-      script.setAttribute('async', '')
-      script.id = 'respondi_src'
-      script.src = 'https://embed.respondi.app/embed.js'
-      document.body.appendChild(script)
-    } else if (window.RespondiEmbed && typeof window.RespondiEmbed.reload === 'function') {
-      window.RespondiEmbed.reload()
+    if (window.RespondiEmbed && typeof window.RespondiEmbed.init === 'function') {
+      window.RespondiEmbed.init()
     }
   }, [])
 
   return (
-    <div
-      data-respondi-container=""
-      data-respondi-mode="regular"
-      data-respondi-src="https://form.respondi.app/yOuZQiro"
-      data-respondi-width="100%"
-      data-respondi-height="600px"
-    />
+    <>
+      <Script
+        id="respondi_src"
+        src="https://embed.respondi.app/embed.js"
+        strategy="afterInteractive"
+        onLoad={() => {
+          if (window.RespondiEmbed && typeof window.RespondiEmbed.init === 'function') {
+            window.RespondiEmbed.init()
+          }
+        }}
+      />
+      <div
+        ref={containerRef}
+        data-respondi-container=""
+        data-respondi-mode="regular"
+        data-respondi-src="https://form.respondi.app/yOuZQiro"
+        data-respondi-width="100%"
+        data-respondi-height="600px"
+        style={{ width: '100%', minHeight: '600px' }}
+      />
+    </>
   )
 }
 
@@ -370,7 +383,7 @@ export default function Home() {
             <Image src="/logos/insight-logo-green.png" alt="Insight" width={310} height={80} className="h-7 md:h-8 w-auto object-contain"/>
           </a>
           <div className="hidden md:flex items-center gap-8">
-            {[['#servicos','Serviços'],['#metodo','Como trabalhamos'],['#sobre','Sobre'],['#faq','FAQ']].map(([href,label]) => (
+            {[['#servicos','Serviços'],['#metodo','Como trabalhamos'],['#sobre','Sobre'],['#faq','FAQ'],['#formulario','Diagnóstico']].map(([href,label]) => (
               <a key={href} href={href} className="text-gray-300 hover:text-white text-sm font-medium transition-colors">{label}</a>
             ))}
             <a href={WA} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#adf01b] hover:bg-[#c3ff3d] text-black px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105">
@@ -385,7 +398,7 @@ export default function Home() {
         </div>
         {mobileOpen && (
           <div className="md:hidden bg-[#0c0c0c] border-t border-white/10 py-6 px-5 flex flex-col gap-2">
-            {[['#servicos','Serviços'],['#metodo','Como trabalhamos'],['#sobre','Sobre'],['#faq','FAQ']].map(([href,label]) => (
+            {[['#servicos','Serviços'],['#metodo','Como trabalhamos'],['#sobre','Sobre'],['#faq','FAQ'],['#formulario','Diagnóstico']].map(([href,label]) => (
               <a key={href} href={href} onClick={() => setMobileOpen(false)} className="text-gray-200 hover:text-white text-base font-medium py-3 border-b border-white/5">{label}</a>
             ))}
             <a href={WA} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)}
@@ -930,8 +943,8 @@ export default function Home() {
       <section id="formulario" className="bg-white py-10 sm:py-16 px-5 sm:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8 sm:mb-10">
-            <span className="text-[#adf01b] text-sm font-bold tracking-widest uppercase">Fale com a gente</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0c0c0c] mt-3">Preencha o formulário</h2>
+            <span className="text-[#adf01b] text-sm font-bold tracking-widest uppercase">Consultoria de marketing personalizada</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0c0c0c] mt-3">Diagnóstico Empresarial</h2>
             <div className="w-16 h-1.5 bg-[#0c0c0c] rounded-full mt-4 mx-auto"></div>
           </div>
           <RespondiForm />
