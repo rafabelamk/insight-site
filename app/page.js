@@ -2,46 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback, Fragment } from 'react'
 import Image from 'next/image'
-import Script from 'next/script'
 
 const WA = 'https://wa.me/5511961590986?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Insight%20e%20gostaria%20de%20saber%20mais!'
-
-// Embed do formulário Respondi
-function RespondiForm() {
-  const containerRef = useRef(null)
-
-  // Se o script já estiver carregado (ex: navegação client-side) e a lib
-  // expuser um método de (re)inicialização, chama na montagem do componente.
-  useEffect(() => {
-    if (window.RespondiEmbed && typeof window.RespondiEmbed.init === 'function') {
-      window.RespondiEmbed.init()
-    }
-  }, [])
-
-  return (
-    <>
-      <Script
-        id="respondi_src"
-        src="https://embed.respondi.app/embed.js"
-        strategy="afterInteractive"
-        onLoad={() => {
-          if (window.RespondiEmbed && typeof window.RespondiEmbed.init === 'function') {
-            window.RespondiEmbed.init()
-          }
-        }}
-      />
-      <div
-        ref={containerRef}
-        data-respondi-container=""
-        data-respondi-mode="regular"
-        data-respondi-src="https://form.respondi.app/yOuZQiro"
-        data-respondi-width="100%"
-        data-respondi-height="600px"
-        style={{ width: '100%', minHeight: '600px' }}
-      />
-    </>
-  )
-}
 
 // TODO: ajuste os números para os reais da Insight
 const STATS = [
@@ -947,7 +909,12 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-black text-[#0c0c0c] mt-3">Diagnóstico Empresarial</h2>
             <div className="w-16 h-1.5 bg-[#0c0c0c] rounded-full mt-4 mx-auto"></div>
           </div>
-          <RespondiForm />
+          <div className="text-center">
+            <a href="https://form.respondi.app/yOuZQiro" target="_blank" rel="noreferrer"
+               className="inline-flex items-center gap-2 bg-[#adf01b] hover:bg-[#c3ff3d] text-black px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 hover:shadow-xl hover:shadow-lime-900/30">
+              Receber diagnóstico
+            </a>
+          </div>
         </div>
       </section>
 
