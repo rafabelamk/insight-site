@@ -910,7 +910,7 @@ export default function Home() {
             <div className="w-16 h-1.5 bg-[#0c0c0c] rounded-full mt-4 mx-auto"></div>
           </div>
           <div className="text-center">
-            <a href="https://form.respondi.app/yOuZQiro" target="_blank" rel="noreferrer"
+            <a href="https://brforms.com/insight-agency/diagnostico-empresarial-insight/preview" target="_blank" rel="noreferrer"
                className="inline-flex items-center gap-2 bg-[#adf01b] hover:bg-[#c3ff3d] text-black px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 hover:shadow-xl hover:shadow-lime-900/30">
               Receber diagnóstico
             </a>
