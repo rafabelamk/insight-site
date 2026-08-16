@@ -5,6 +5,31 @@ import Image from 'next/image'
 
 const WA = 'https://wa.me/5511961590986?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Insight%20e%20gostaria%20de%20saber%20mais!'
 
+// Embed do formulário Respondi
+function RespondiForm() {
+  useEffect(() => {
+    if (!document.querySelector('#respondi_src')) {
+      const script = document.createElement('script')
+      script.setAttribute('async', '')
+      script.id = 'respondi_src'
+      script.src = 'https://embed.respondi.app/embed.js'
+      document.body.appendChild(script)
+    } else if (window.RespondiEmbed && typeof window.RespondiEmbed.reload === 'function') {
+      window.RespondiEmbed.reload()
+    }
+  }, [])
+
+  return (
+    <div
+      data-respondi-container=""
+      data-respondi-mode="regular"
+      data-respondi-src="https://form.respondi.app/yOuZQiro"
+      data-respondi-width="100%"
+      data-respondi-height="600px"
+    />
+  )
+}
+
 // TODO: ajuste os números para os reais da Insight
 const STATS = [
   { icon: true, label: 'Negócios de diversos nichos impactados' },
@@ -898,6 +923,18 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* FORMULÁRIO DE CONTATO */}
+      <section id="formulario" className="bg-white py-10 sm:py-16 px-5 sm:px-8">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-8 sm:mb-10">
+            <span className="text-[#adf01b] text-sm font-bold tracking-widest uppercase">Fale com a gente</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0c0c0c] mt-3">Preencha o formulário</h2>
+            <div className="w-16 h-1.5 bg-[#0c0c0c] rounded-full mt-4 mx-auto"></div>
+          </div>
+          <RespondiForm />
         </div>
       </section>
 
